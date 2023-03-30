@@ -14,4 +14,6 @@ fffc_src += files(
     'fffc_math_cross_product.f90',
     'fffc_math.f90',
     'fffc_module.f90',
+    'fffc_string_to_string.f90',
+    'fffc_string.f90',
 )
