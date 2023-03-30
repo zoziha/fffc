@@ -12,4 +12,10 @@ module fffc_math
             integer(kind=int_kind) :: cross_product_int_kind(3)
         end function cross_product_int_kind
     end interface cross_product
+    interface
+        elemental module function arg(z)
+            complex(kind=complex_kind), intent(in) :: z
+            real(kind=real_kind) :: arg
+        end function arg
+    end interface
 end module fffc_math
