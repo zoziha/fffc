@@ -5,6 +5,7 @@ fffc_src += files(
     'fffc_filesystem_rmdir.f90',
     'fffc_filesystem.f90',
     'fffc_kinds.F90',
+    'fffc_linalg_eye.f90',
     'fffc_linalg_det.F90',
     'fffc_linalg_inv.F90',
     'fffc_linalg_solve.F90',

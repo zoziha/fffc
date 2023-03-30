@@ -1,4 +1,5 @@
 module fffc_linalg
+    use iso_fortran_env, only: int8
     use fffc_kinds
     interface inv
         module subroutine inv_real_kind(a)
@@ -23,5 +24,9 @@ module fffc_linalg
             real(kind=real_kind), intent(inout) :: a(:,:)
             real(kind=real_kind) :: ans
         end function det
+        pure module function eye(m, n) result(a)
+            integer, intent(in) :: m, n
+            integer(kind=int8) :: a(m,n)
+        end function eye
     end interface
 end module fffc_linalg
