@@ -26,6 +26,20 @@ module fffc_math
             integer(kind=int_kind), allocatable :: ans(:)
         end function arange_int_kind
     end interface arange
+    interface diff
+        pure module function diff_real_kind(x, n, prepend, append) result(y)
+            real(kind=real_kind), intent(in) :: x(:)
+            integer, intent(in), optional :: n
+            real(kind=real_kind), intent(in), optional :: prepend(:), append(:)
+            real(kind=real_kind), allocatable :: y(:)
+        end function diff_real_kind
+        pure module function diff_int_kind(x, n, prepend, append) result(y)
+            integer(kind=int_kind), intent(in) :: x(:)
+            integer, intent(in), optional :: n
+            integer(kind=int_kind), intent(in), optional :: prepend(:), append(:)
+            integer(kind=int_kind), allocatable :: y(:)
+        end function diff_int_kind
+    end interface diff
     interface
         elemental module function arg(z)
             complex(kind=complex_kind), intent(in) :: z
