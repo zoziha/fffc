@@ -19,6 +19,16 @@ module fffc_linalg
             complex(kind=complex_kind), intent(inout) :: b(:,:)
         end subroutine solve_complex_kind
     end interface solve
+    interface diag
+        pure module function diag_rank1(v) result(a)
+            real(kind=real_kind), intent(in) :: v(:)
+            real(kind=real_kind) :: a(size(v),size(v))
+        end function diag_rank1
+        pure module function diag_rank2(a) result(v)
+            real(kind=real_kind), intent(in) :: a(:,:)
+            real(kind=real_kind) :: v(min(size(a,1),size(a,2)))
+        end function diag_rank2
+    end interface diag
     interface
         module function det(a) result(ans)
             real(kind=real_kind), intent(inout) :: a(:,:)
