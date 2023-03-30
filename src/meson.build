@@ -17,6 +17,8 @@ fffc_src += files(
     'fffc_math_is_close.f90',
     'fffc_math.f90',
     'fffc_module.f90',
+    'fffc_stats_mean.f90',
+    'fffc_stats.f90',
     'fffc_string_to_string.f90',
     'fffc_string.f90',
 )
