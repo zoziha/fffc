@@ -10,6 +10,11 @@
 
 ## 使用 Meson 构建链接库
 
+```sh
+> meson setup _build
+> meson compile -C _build
+```
+
 ## 使用 CMake 构建链接库
 
 @TODO

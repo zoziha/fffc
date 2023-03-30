@@ -31,5 +31,11 @@ module fffc_math
             complex(kind=complex_kind), intent(in) :: z
             real(kind=real_kind) :: arg
         end function arg
+        elemental module function is_close(a, b, rel_tol, abs_tol, equal_nan) result(close)
+            real(kind=real_kind), intent(in) :: a, b
+            real(kind=real_kind), intent(in), optional :: rel_tol, abs_tol
+            logical, intent(in), optional :: equal_nan
+            logical :: close
+        end function is_close
     end interface
 end module fffc_math
