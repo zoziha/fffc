@@ -11,6 +11,7 @@ fffc_src += files(
     'fffc_linalg_inv.F90',
     'fffc_linalg_solve.F90',
     'fffc_linalg.f90',
+    'fffc_math_arange.f90',
     'fffc_math_arg.f90',
     'fffc_math_cross_product.f90',
     'fffc_math.f90',
