@@ -28,7 +28,7 @@ contains
             return
         end if
         block
-            real(kind=real_kind) :: work(size_work)
+            real(kind=fffc_real_kind) :: work(size_work)
             if (size_prepend > 0) work(:size_prepend) = prepend
             work(size_prepend + 1:size_prepend + size_x) = x
             if (size_append > 0) work(size_prepend + size_x + 1:) = append
@@ -66,7 +66,7 @@ contains
             return
         end if
         block
-            integer(kind=int_kind) :: work(size_work)
+            integer(kind=fffc_int_kind) :: work(size_work)
             if (size_prepend > 0) work(:size_prepend) = prepend
             work(size_prepend + 1:size_prepend + size_x) = x
             if (size_append > 0) work(size_prepend + size_x + 1:) = append

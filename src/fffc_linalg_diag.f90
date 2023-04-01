@@ -7,7 +7,7 @@ contains
                 if (i == j) then
                     a(i, j) = v(i)
                 else
-                    a(i, j) = 0.0_real_kind
+                    a(i, j) = 0.0_fffc_real_kind
                 end if
             end do
         end do

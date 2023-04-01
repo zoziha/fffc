@@ -2,8 +2,8 @@ submodule(fffc_math) fffc_math_is_close
     use ieee_arithmetic, only: ieee_is_nan
 contains
     module procedure is_close
-        real(kind=real_kind) :: abs_tol_, rel_tol_
-        real(kind=real_kind), parameter :: sqrt_eps = sqrt(epsilon(1.0_real_kind))
+        real(kind=fffc_real_kind) :: abs_tol_, rel_tol_
+        real(kind=fffc_real_kind), parameter :: sqrt_eps = sqrt(epsilon(1.0_fffc_real_kind))
         logical :: equal_nan_
         if (present(equal_nan)) then
             equal_nan_ = equal_nan
@@ -22,7 +22,7 @@ contains
             if (present(abs_tol)) then
                 abs_tol_ = abs_tol
             else
-                abs_tol_ = 0.0_real_kind
+                abs_tol_ = 0.0_fffc_real_kind
             end if
             close = abs(a - b) <= max(abs(rel_tol_*max(abs(a), abs(b))), &
                                       abs(abs_tol_))
