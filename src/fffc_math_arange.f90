@@ -8,7 +8,7 @@ contains
         else
             step_ = 1.0_fffc_real_kind
         end if
-        allocate(ans(floor((stop - start) / step_) + 1), source=[(start + (i - 1) * step_, i = 1, size(ans))])
+        allocate(ans, source=[(start + (i - 1) * step_, i = 1, floor((stop - start) / step_) + 1)])
     end procedure arange_real_kind
     module procedure arange_int_kind
         integer(kind=fffc_int_kind) :: step_
@@ -18,6 +18,6 @@ contains
         else
             step_ = 1_fffc_int_kind
         end if
-        allocate(ans((stop - start) / step_ + 1), source=[(i, i = start, stop, step_)])
+        allocate(ans, source=[(i, i = start, stop, step_)])
     end procedure arange_int_kind
 end submodule fffc_math_arange
