@@ -29,6 +29,26 @@ module fffc_linalg
             real(kind=fffc_real_kind) :: v(min(size(a,1),size(a,2)))
         end function diag_rank2
     end interface diag
+    interface gemm
+        module function rrgemm(a, b) result(c)
+            real(kind=fffc_real_kind), intent(in) :: a(:,:), b(:,:)
+            real(kind=fffc_real_kind) :: c(size(a,1),size(b,2))
+        end function rrgemm
+        module function ccgemm(a, b) result(c)
+            complex(kind=fffc_complex_kind), intent(in) :: a(:,:), b(:,:)
+            complex(kind=fffc_complex_kind) :: c(size(a,1),size(b,2))
+        end function ccgemm
+        module function crgemm(a, b) result(c)
+            complex(kind=fffc_complex_kind), intent(in) :: a(:,:)
+            real(kind=fffc_real_kind), intent(in) :: b(:,:)
+            complex(kind=fffc_complex_kind) :: c(size(a,1),size(b,2))
+        end function crgemm
+        module function rcgemm(a, b) result(c)
+            real(kind=fffc_real_kind), intent(in) :: a(:,:)
+            complex(kind=fffc_complex_kind), intent(in) :: b(:,:)
+            complex(kind=fffc_complex_kind) :: c(size(a,1),size(b,2))
+        end function rcgemm
+    end interface gemm
     interface
         module function det(a) result(ans)
             real(kind=fffc_real_kind), intent(inout) :: a(:,:)
