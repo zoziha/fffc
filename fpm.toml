@@ -1,12 +1,14 @@
 name = "fffc"
-version = "0.3.0"
+version = "0.4.0"
 license = "BSD-3-Clause"
 author = "左志华"
 maintainer = "左志华（zuo.zhihua@qq.com）"
 copyright = "Copyright 2022~2023, 左志华"
 description = "Free function collection"
-# fpm > 0.7.0
+# fpm > 0.8.0
 [build]
 link = 'openblas'
 [install]
 library = true
+[fortran]
+implicit-external = true

@@ -16,6 +16,9 @@ title: Linear Algebra
 
 `call [[fffc_linalg(module):inv(interface)]](a)`
 
+@note
+没有使用 `b = inv(a)` 的形式是考虑到：将矩阵赋值的操作交给用户自己。
+
 ### 例子
 
 ```fortran
@@ -52,6 +55,9 @@ end program demo_gemm
 ### 语法
 
 `call [[fffc_linalg(module):solve(interface)]](a, b)`
+
+@note
+没有使用 `b = solve(a, b)` 的形式是考虑到：将矩阵赋值的操作交给用户自己。
 
 ### 例子
 
