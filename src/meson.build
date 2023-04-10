@@ -26,4 +26,8 @@ fffc_src += files(
     'fffc_stats.f90',
     'fffc_string_to_string.f90',
     'fffc_string.f90',
+    'fffc_terminal.F90',
+    'fffc_utils_is_env.f90',
+    'fffc_utils_swap.f90',
+    'fffc_utils.f90',
 )

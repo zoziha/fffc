@@ -14,4 +14,6 @@ title: User Guide
 - `math`：数学函数；
 - `random`：随机数；
 - `stats`：统计函数；
-- `string`：字符串操作。
+- `string`：字符串操作；
+- `terminal`：终端操作；
+- `utils`：工具函数。
