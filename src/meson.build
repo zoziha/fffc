@@ -17,6 +17,7 @@ fffc_src += files(
     'fffc_math_cross_product.f90',
     'fffc_math_diff.f90',
     'fffc_math_is_close.f90',
+    'fffc_math_linspace.f90',
     'fffc_math.f90',
     'fffc_module.f90',
     'fffc_random_randn.f90',

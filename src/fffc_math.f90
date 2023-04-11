@@ -40,6 +40,20 @@ module fffc_math
             integer(kind=fffc_int_kind), allocatable :: y(:)
         end function diff_int_kind
     end interface diff
+    interface linspace
+        pure module function linspace_real_kind(start, stop, n) result(ans)
+            real(kind=fffc_real_kind), intent(in) :: start
+            real(kind=fffc_real_kind), intent(in) :: stop
+            integer, intent(in) :: n
+            real(kind=fffc_real_kind) :: ans(max(0, n))
+        end function linspace_real_kind
+        pure module function linspace_int_kind(start, stop, n) result(ans)
+            integer(kind=fffc_int_kind), intent(in) :: start
+            integer(kind=fffc_int_kind), intent(in) :: stop
+            integer, intent(in) :: n
+            integer(kind=fffc_int_kind) :: ans(max(0, n))
+        end function linspace_int_kind
+    end interface linspace
     interface
         elemental module function arg(z)
             complex(kind=fffc_complex_kind), intent(in) :: z
