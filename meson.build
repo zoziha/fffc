@@ -1,7 +1,7 @@
 project(
     'fffc',
     'fortran',
-    version: '0.4.0',
+    version: '0.5.0',
     default_options: [
         'buildtype=debugoptimized',
         'fortran_std=f2008',
