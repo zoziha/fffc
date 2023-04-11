@@ -15,7 +15,6 @@ fffc_lib = library(
     version: meson.project_version(),
     dependencies: [
         dependency('openblas'),
-        dependency('openmp'),
     ],
     install: true,
 )

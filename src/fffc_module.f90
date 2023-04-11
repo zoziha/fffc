@@ -8,5 +8,6 @@ module fffc_module
     use fffc_stats
     use fffc_string
     use fffc_terminal
+    use fffc_time
     use fffc_utils
 end module fffc_module

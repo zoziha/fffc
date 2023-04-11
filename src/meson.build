@@ -31,6 +31,8 @@ fffc_src += files(
     'fffc_string_to_upper.f90',
     'fffc_string.f90',
     'fffc_terminal.F90',
+    'fffc_time.f90',
+    'fffc_utils_bubble_sort.f90',
     'fffc_utils_is_env.f90',
     'fffc_utils_swap.f90',
     'fffc_utils.f90',
