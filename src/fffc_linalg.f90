@@ -1,6 +1,7 @@
 module fffc_linalg
     use iso_fortran_env, only: int8
     use fffc_kinds
+    private :: int8
     interface inv
         module subroutine inv_real_kind(a)
             real(kind=fffc_real_kind), intent(inout) :: a(:,:)

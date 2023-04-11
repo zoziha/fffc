@@ -9,5 +9,10 @@ module fffc_filesystem
         module subroutine rmdir(path)
             character(len=*), intent(in) :: path
         end subroutine rmdir
+        module function is_exist(file, is_directory)
+            character(len=*), intent(in) :: file
+            logical, intent(in), optional :: is_directory
+            logical :: is_exist
+        end function is_exist
     end interface
 end module fffc_filesystem
