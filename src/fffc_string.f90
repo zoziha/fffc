@@ -17,4 +17,14 @@ module fffc_string
             character(len=:), allocatable :: string
         end function to_string_logical_kind
     end interface to_string
+    interface
+        pure module function to_lower(string) result(lower)
+            character(len=*), intent(in) :: string
+            character(len=len(string)) :: lower
+        end function to_lower
+        pure module function to_upper(string) result(upper)
+            character(len=*), intent(in) :: string
+            character(len=len(string)) :: upper
+        end function to_upper
+    end interface
 end module fffc_string

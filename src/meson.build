@@ -1,6 +1,6 @@
 fffc_src += files(
     'fffc_constants.f90',
-    'fffc_filesystem_is_exist.f90',
+    'fffc_filesystem_is_exist.F90',
     'fffc_filesystem_is_windows.f90',
     'fffc_filesystem_mkdir.f90',
     'fffc_filesystem_rmdir.f90',
@@ -26,7 +26,9 @@ fffc_src += files(
     'fffc_random.f90',
     'fffc_stats_mean.f90',
     'fffc_stats.f90',
+    'fffc_string_to_lower.f90',
     'fffc_string_to_string.f90',
+    'fffc_string_to_upper.f90',
     'fffc_string.f90',
     'fffc_terminal.F90',
     'fffc_utils_is_env.f90',
