@@ -10,6 +10,16 @@ module fffc_linalg
             complex(kind=fffc_complex_kind), intent(inout) :: a(:,:)
         end subroutine inv_complex_kind
     end interface inv
+    interface inv_func
+        module function inv_func_real_kind(a) result(b)
+            real(kind=fffc_real_kind), intent(in) :: a(:,:)
+            real(kind=fffc_real_kind) :: b(size(a,1),size(a,2))
+        end function inv_func_real_kind
+        module function inv_func_complex_kind(a) result(b)
+            complex(kind=fffc_complex_kind), intent(in) :: a(:,:)
+            complex(kind=fffc_complex_kind) :: b(size(a,1),size(a,2))
+        end function inv_func_complex_kind
+    end interface inv_func
     interface solve
         module subroutine solve_real_kind(a, b)
             real(kind=fffc_real_kind), intent(inout) :: a(:,:)
@@ -20,6 +30,18 @@ module fffc_linalg
             complex(kind=fffc_complex_kind), intent(inout) :: b(:,:)
         end subroutine solve_complex_kind
     end interface solve
+    interface solve_func
+        module function solve_func_real_kind(a, b) result(x)
+            real(kind=fffc_real_kind), intent(in) :: a(:,:)
+            real(kind=fffc_real_kind), intent(in) :: b(:,:)
+            real(kind=fffc_real_kind) :: x(size(b,1),size(b,2))
+        end function solve_func_real_kind
+        module function solve_func_complex_kind(a, b) result(x)
+            complex(kind=fffc_complex_kind), intent(in) :: a(:,:)
+            complex(kind=fffc_complex_kind), intent(in) :: b(:,:)
+            complex(kind=fffc_complex_kind) :: x(size(b,1),size(b,2))
+        end function solve_func_complex_kind
+    end interface solve_func
     interface diag
         pure module function diag_rank1(v) result(a)
             real(kind=fffc_real_kind), intent(in) :: v(:)
