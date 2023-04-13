@@ -2,6 +2,7 @@ fffc_src += files(
     'fffc_constants.f90',
     'fffc_filesystem_is_exist.F90',
     'fffc_filesystem_is_windows.f90',
+    'fffc_filesystem_join.f90',
     'fffc_filesystem_mkdir.f90',
     'fffc_filesystem_rmdir.f90',
     'fffc_filesystem.f90',

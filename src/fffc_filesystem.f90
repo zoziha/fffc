@@ -15,4 +15,11 @@ module fffc_filesystem
             logical :: is_exist
         end function is_exist
     end interface
+    interface operator(.join.)
+        module function join(path, name)
+            character(len=*), intent(in) :: path
+            character(len=*), intent(in) :: name
+            character(len=len(path)+len(name)+1) :: join
+        end function join
+    end interface
 end module fffc_filesystem
