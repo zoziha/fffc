@@ -9,8 +9,8 @@
 ## 使用 Meson 构建链接库
 
 ```sh
-> meson setup _build
-> meson compile -C _build
+> meson setup _build -Dprefix=/mingw64
+> meson install --destdir 'C:\msys64\' -C _build
 ```
 
 ## 使用 fpm 构建链接库
