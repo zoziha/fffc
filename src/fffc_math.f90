@@ -1,15 +1,15 @@
 module fffc_math
     use fffc_kinds
     interface cross_product
-        pure module function cross_product_real_kind(v1, v2)
+        pure module function cross_product_real_kind(v1, v2) result(ans)
             real(kind=fffc_real_kind), intent(in) :: v1(3)
             real(kind=fffc_real_kind), intent(in) :: v2(3)
-            real(kind=fffc_real_kind) :: cross_product_real_kind(3)
+            real(kind=fffc_real_kind) :: ans(3)
         end function cross_product_real_kind
-        pure module function cross_product_int_kind(v1, v2)
+        pure module function cross_product_int_kind(v1, v2) result(ans)
             integer(kind=fffc_int_kind), intent(in) :: v1(3)
             integer(kind=fffc_int_kind), intent(in) :: v2(3)
-            integer(kind=fffc_int_kind) :: cross_product_int_kind(3)
+            integer(kind=fffc_int_kind) :: ans(3)
         end function cross_product_int_kind
     end interface cross_product
     interface arange
