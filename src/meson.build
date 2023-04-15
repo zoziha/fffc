@@ -39,4 +39,5 @@ fffc_src += files(
     'fffc_utils_is_env.f90',
     'fffc_utils_swap.f90',
     'fffc_utils.f90',
+    'random.f90'
 )

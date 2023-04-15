@@ -10,4 +10,5 @@ module fffc_module
     use fffc_terminal
     use fffc_time
     use fffc_utils
+    use random
 end module fffc_module

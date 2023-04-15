@@ -1,7 +1,7 @@
 project(
     'fffc',
     'fortran',
-    version: '0.6.0',
+    version: '1.0.0',
     default_options: [
         'buildtype=debugoptimized',
         'fortran_std=f2008',
@@ -22,6 +22,11 @@ fffc_lib = library(
 fffc_inc = fffc_lib.private_dir_include()
 fffc_dep = declare_dependency(
     include_directories: fffc_inc,
+    link_with: fffc_lib,
+)
+example_random = executable(
+    'random',
+    'example/test_random.f90',
     link_with: fffc_lib,
 )
 fffc_lic = files(

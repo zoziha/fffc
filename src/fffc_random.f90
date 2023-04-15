@@ -1,5 +1,8 @@
 module fffc_random
     use fffc_kinds
+    use random
+    private
+    public :: randn, randu
     interface
         impure elemental module subroutine randn(x, mean, std)
             real(kind=fffc_real_kind), intent(out) :: x
