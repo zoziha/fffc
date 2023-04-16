@@ -9,6 +9,7 @@ project(
     ]
 )
 fffc_src = files()
+fffc_src_filenames = []
 subdir('src')
 fffc_lib = library(
     meson.project_name(),
@@ -36,6 +37,28 @@ install_data(
     fffc_lic,
     install_dir: get_option('datadir')/'licenses'/meson.project_name(),
 )
+if host_machine.system() == 'windows'
+    symbols_file = 'lib'+meson.project_name()+'-'+meson.project_version().split('.')[0]+'.dll.symbols'
+    obj_suffix = '.obj'
+else
+    symbols_file = 'lib'+meson.project_name()+'.so.'+meson.project_version()+'.symbols'
+    obj_suffix = '.o'
+endif
+fffc_obj = []
+foreach source: fffc_src_filenames
+    fffc_obj += 'src_'+source+obj_suffix
+endforeach
+install_subdir(fffc_lib.path()+'.p',
+    install_dir: 'include'/meson.project_name(),
+    strip_directory: true,
+    exclude_files: [
+        'depscan.dd',
+        meson.project_name()+'-deps.json',
+        symbols_file,
+        meson.project_name()+'.dat',
+        fffc_obj,
+    ]
+)
 pkg = import('pkgconfig')
 pkg.generate(
     fffc_lib,
@@ -43,4 +66,5 @@ pkg.generate(
     description: 'Fortran free function collection',
     version: meson.project_version(),
     requires: 'openblas',
+    subdirs: meson.project_name(),
 )

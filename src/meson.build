@@ -1,4 +1,4 @@
-fffc_src += files(
+fffc_src_filenames += [
     'fffc_constants.f90',
     'fffc_filesystem_is_exist.F90',
     'fffc_filesystem_is_windows.f90',
@@ -40,4 +40,5 @@ fffc_src += files(
     'fffc_utils_swap.f90',
     'fffc_utils.f90',
     'random.f90'
-)
+]
+fffc_src += files(fffc_src_filenames)
