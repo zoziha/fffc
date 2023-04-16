@@ -7,7 +7,7 @@ module fffc_terminal
                                             achar(27)//'[33m', &
                                             achar(27)//'[34m', &
                                             achar(27)//'[00m']
-    type terminal
+    type, public :: terminal
         logical, private :: use_color
     contains
         procedure :: setup => set_terminal
