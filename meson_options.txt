@@ -1,1 +1,2 @@
 option('REAL64', type: 'boolean', value: false, description: 'Use 64-bit floating point numbers')
+option('NO_COLOR', type: 'boolean', value: false, description: 'Disable ANSI color output')
