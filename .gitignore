@@ -1,0 +1,7 @@
+src/build-*
+src/fffc-*
+pkg/*
+fffc-*.zip
+mingw*
+
+.vscode/*
