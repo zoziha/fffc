@@ -14,6 +14,9 @@ module fffc_filesystem
             logical, intent(in), optional :: is_directory
             logical :: is_exist
         end function is_exist
+        integer module function countlines(file)
+            character(len=*), intent(in) :: file
+        end function countlines
     end interface
     interface operator(.join.)
         module function join(path, name)

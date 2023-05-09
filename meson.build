@@ -25,6 +25,7 @@ fffc_dep = declare_dependency(
     include_directories: fffc_inc,
     link_with: fffc_lib,
 )
+subdir('test')
 subdir('example')
 fffc_lic = files(
     'LICENSE',
