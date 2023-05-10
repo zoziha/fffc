@@ -14,6 +14,8 @@ fffc_src_filenames += [
     'fffc_linalg_det.F90',
     'fffc_linalg_inv_func.f90',
     'fffc_linalg_inv.F90',
+    'fffc_linalg_linv.F90',
+    'fffc_linalg_rinv.F90',
     'fffc_linalg_solve_func.f90',
     'fffc_linalg_solve.F90',
     'fffc_linalg.f90',

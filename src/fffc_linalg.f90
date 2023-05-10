@@ -20,6 +20,28 @@ module fffc_linalg
             complex(kind=fffc_complex_kind) :: b(size(a,1),size(a,2))
         end function inv_func_complex_kind
     end interface inv_func
+    interface linv
+        !! m > n, 列满秩，使用 linv
+        module function linv_real_kind(x) result(y)
+            real(kind=fffc_real_kind), intent(in) :: x(:, :)
+            real(kind=fffc_real_kind) :: y(size(x, 2), size(x, 1))
+        end function linv_real_kind
+        module function linv_complex_kind(x) result(y)
+            complex(kind=fffc_complex_kind), intent(in) :: x(:, :)
+            complex(kind=fffc_complex_kind) :: y(size(x, 2), size(x, 1))
+        end function linv_complex_kind
+    end interface linv
+    interface rinv
+        !! m < n, 行满秩，使用 rinv
+        module function rinv_real_kind(x) result(y)
+            real(kind=fffc_real_kind), intent(in) :: x(:, :)
+            real(kind=fffc_real_kind) :: y(size(x, 2), size(x, 1))
+        end function rinv_real_kind
+        module function rinv_complex_kind(x) result(y)
+            complex(kind=fffc_complex_kind), intent(in) :: x(:, :)
+            complex(kind=fffc_complex_kind) :: y(size(x, 2), size(x, 1))
+        end function rinv_complex_kind
+    end interface rinv
     interface solve
         module subroutine solve_real_kind(a, b)
             real(kind=fffc_real_kind), intent(inout) :: a(:,:)
