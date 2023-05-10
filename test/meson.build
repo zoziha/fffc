@@ -6,5 +6,25 @@ test(
         dependencies: [
             fffc_dep,
         ],
-    )
+    ),
+)
+test(
+    'example_dirname',
+    executable(
+        'example_dirname',
+        'example_dirname.f90',
+        dependencies:[
+            fffc_dep,
+        ],
+    ),
+)
+test(
+    'example_basename',
+    executable(
+        'example_basename',
+        'example_basename.f90',
+        dependencies:[
+            fffc_dep,
+        ],
+    ),
 )
