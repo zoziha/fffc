@@ -8,7 +8,7 @@ module fffc_terminal
                                             achar(27)//'[34m', &
                                             achar(27)//'[00m']
     type, public :: terminal
-        logical, private :: use_color
+        logical, private :: use_color = .false.
     contains
         procedure :: setup => set_terminal
         procedure :: progress_bar => terminal_progress_bar
