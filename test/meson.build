@@ -28,3 +28,23 @@ test(
         ],
     ),
 )
+test(
+    'example_linv',
+    executable(
+        'example_linv',
+        'example_linv.f90',
+        dependencies:[
+            fffc_dep,
+        ],
+    ),
+)
+test(
+    'example_rinv',
+    executable(
+        'example_rinv',
+        'example_rinv.f90',
+        dependencies:[
+            fffc_dep,
+        ],
+    ),
+)
