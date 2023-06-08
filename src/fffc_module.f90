@@ -1,4 +1,6 @@
+!> 功能汇总
 module fffc_module
+
     use fffc_constants
     use fffc_filesystem
     use fffc_kinds
@@ -12,4 +14,6 @@ module fffc_module
     use fffc_utils
     use random
     use rkf45_module
+    implicit none
+
 end module fffc_module
