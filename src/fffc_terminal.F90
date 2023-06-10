@@ -1,5 +1,6 @@
 !> 终端
 module fffc_terminal
+
     use fffc_utils
     use, intrinsic :: iso_c_binding, only: ccr => c_carriage_return
     implicit none
@@ -144,11 +145,13 @@ contains
         character(:), allocatable :: bar
         integer :: length_
         integer, parameter :: l = 35
+        real :: p_local
 
         length_ = len(msg) + l + 12
+        p_local = min(1.0, max(0.0, p))
         allocate (character(length_) :: bar)
         write (bar, "(2A,A2,A35,A2,F5.1,A2)") ccr, msg, &
-            " [", repeat("*", nint(p*l))//repeat("-", l - nint(p*l)), "] ", 100*p, " %"
+            " [", repeat("*", nint(p_local*l))//repeat("-", l - nint(p_local*l)), "] ", 100*p, " %"
         write (*, '(a)', advance='no') bar
 
     end subroutine terminal_progress_bar

@@ -48,3 +48,14 @@ test(
         ],
     ),
 )
+
+test(
+    'example_progress_bar',
+    executable(
+        'example_progress_bar',
+        'example_progress_bar.f90',
+        dependencies:[
+            fffc_dep,
+        ],
+    ),
+)
