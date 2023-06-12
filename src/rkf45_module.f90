@@ -1,16 +1,20 @@
 module rkf45_module
+
+    use fffc_kinds, only: rk => fffc_real_kind
+
     private
     public :: rkf45
-    integer, parameter :: rkf45_real_kind = kind(0.0)
+
     abstract interface
         !> `fcn` evaluates the derivative for the ODE.
         subroutine fcn(t, y, yp)
             import
-            real(kind=rkf45_real_kind), intent(in) :: t
-            real(kind=rkf45_real_kind), intent(in) :: y(:)
-            real(kind=rkf45_real_kind), intent(out) :: yp(:)
+            real(kind=rk), intent(in) :: t
+            real(kind=rk), intent(in) :: y(:)
+            real(kind=rk), intent(out) :: yp(:)
         end subroutine fcn
     end interface
+
 contains
     !> rkf45 is primarily designed to solve non-stiff and mildly stiff
     !> differential equations when derivative evaluations are inexpensive.
@@ -186,12 +190,12 @@ contains
         !    should not be altered.
 
         integer, intent(in) :: neqn
-        real(kind=rkf45_real_kind), intent(inout) :: y(neqn)
-        real(kind=rkf45_real_kind), intent(inout) :: t
-        real(kind=rkf45_real_kind), intent(in) :: tout
+        real(kind=rk), intent(inout) :: y(neqn)
+        real(kind=rk), intent(inout) :: t
+        real(kind=rk), intent(in) :: tout
         integer, intent(inout) :: iflag, iwork(5)
-        real(kind=rkf45_real_kind), intent(inout) :: relerr, work(*)
-        real(kind=rkf45_real_kind), intent(in) :: abserr
+        real(kind=rk), intent(inout) :: relerr, work(*)
+        real(kind=rk), intent(in) :: abserr
 
         procedure(fcn) :: f
 
@@ -239,18 +243,18 @@ contains
         logical :: hfaild, output
 
         integer, intent(in) :: neqn
-        real(kind=rkf45_real_kind), intent(inout) :: y(neqn)
-        real(kind=rkf45_real_kind), intent(inout) :: t
-        real(kind=rkf45_real_kind), intent(in) :: tout
+        real(kind=rk), intent(inout) :: y(neqn)
+        real(kind=rk), intent(inout) :: t
+        real(kind=rk), intent(in) :: tout
         integer, intent(inout) :: iflag
-        real(kind=rkf45_real_kind), intent(inout) :: relerr
+        real(kind=rk), intent(inout) :: relerr
 
         integer :: nfe, kop, init, jflag, kflag
-        real(kind=rkf45_real_kind) :: abserr, h, yp(neqn), f1(neqn), f2(neqn), f3(neqn), f4(neqn), f5(neqn), savre, savae
+        real(kind=rk) :: abserr, h, yp(neqn), f1(neqn), f2(neqn), f3(neqn), f4(neqn), f5(neqn), savre, savae
 
         procedure(fcn) :: f
 
-        real(kind=rkf45_real_kind) a, ae, dt, ee, eeoet, esttol, et, hmin, remin, rer, s, scale, tol, toln, twoeps, u26, ypk
+        real(kind=rk) a, ae, dt, ee, eeoet, esttol, et, hmin, remin, rer, s, scale, tol, toln, twoeps, u26, ypk
 
         integer :: k, maxnfe, mflag
 
@@ -258,7 +262,7 @@ contains
         !  to obtain higher accuracy with this subroutine are usually
         !  very expensive and often unsuccessful.
 
-        data remin/1.e-12_rkf45_real_kind/
+        data remin/1.e-12_rk/
 
         !     the expense is controlled by restricting the number
         !     of function evaluations to be approximately maxnfe.
@@ -273,7 +277,7 @@ contains
         data twoeps, u26/4.4e-16, 5.72e-15/
 
         !> Check input parameters
-        if (neqn < 1 .or. relerr < 0.0_rkf45_real_kind .or. abserr < 0.0_rkf45_real_kind) goto 10
+        if (neqn < 1 .or. relerr < 0.0_rk .or. abserr < 0.0_rk) goto 10
         mflag = abs(iflag)
         if ((mflag >= 1) .and. (mflag <= 8)) goto 20
 
@@ -293,14 +297,14 @@ contains
         if (kflag == 3) goto 45
         if (init == 0) goto 45
         if (kflag == 4) goto 40
-        if ((kflag == 5) .and. (abserr == 0.0_rkf45_real_kind)) goto 30
+        if ((kflag == 5) .and. (abserr == 0.0_rk)) goto 30
         if ((kflag == 6) .and. (relerr <= savre) .and. (abserr <= savae)) goto 30
         goto 50
 
         !     iflag = 3,4,5,6,7 or 8
 25      if (iflag == 3) goto 45
         if (iflag == 4) goto 40
-        if ((iflag == 5) .and. (abserr > 0.0_rkf45_real_kind)) goto 45
+        if ((iflag == 5) .and. (abserr > 0.0_rk)) goto 45
 
         !     integration cannot be continued since user did not respond to
         !     the instructions pertaining to iflag=5,6,7 or 8
@@ -369,9 +373,9 @@ contains
             if (tol <= 0.) goto 70
             toln = tol
             ypk = abs(yp(k))
-            if (ypk*h**5 > tol) h = (tol/ypk)**0.2_rkf45_real_kind
+            if (ypk*h**5 > tol) h = (tol/ypk)**0.2_rk
 70      end do
-        if (toln <= 0.0_rkf45_real_kind) h = 0.0_rkf45_real_kind
+        if (toln <= 0.0_rk) h = 0.0_rk
         h = max(h, u26*max(abs(t), abs(dt)))
         jflag = sign(2, iflag)
 
@@ -382,7 +386,7 @@ contains
         !     test to see if rkf45 is being severely impacted by too many
         !     output points
 
-        if (abs(h) >= 2.0_rkf45_real_kind*abs(dt)) kop = kop + 1
+        if (abs(h) >= 2.0_rk*abs(dt)) kop = kop + 1
         if (kop /= 100) goto 85
 
         !     unnecessary frequency of output
@@ -409,7 +413,7 @@ contains
         !     to avoid premature underflow in the error tolerance function,
         !     scale the error tolerances
 
-        scale = 2.0_rkf45_real_kind/relerr
+        scale = 2.0_rk/relerr
         ae = scale*abserr
 
         !     step by step integration
@@ -425,7 +429,7 @@ contains
         !     thus lessen the impact of output points on the code.
 
         dt = tout - t
-        if (abs(dt) >= 2.0_rkf45_real_kind*abs(h)) goto 200
+        if (abs(dt) >= 2.0_rk*abs(h)) goto 200
         if (abs(dt) > abs(h)) goto 150
 
         !     the next successful step will complete the integration to the
@@ -435,7 +439,7 @@ contains
         h = dt
         goto 200
 
-150     h = 0.5_rkf45_real_kind*dt
+150     h = 0.5_rk*dt
 
         !     core integrator for taking a single step
 
@@ -479,24 +483,24 @@ contains
         !     measured with respect to the average of the magnitudes of the
         !     solution at the beginning and end of the step.
 
-        eeoet = 0.0_rkf45_real_kind
+        eeoet = 0.0_rk
         do k = 1, neqn
             et = abs(y(k)) + abs(f1(k)) + ae
-            if (et > 0.0_rkf45_real_kind) goto 240
+            if (et > 0.0_rk) goto 240
 
             !       inappropriate error tolerance
             iflag = 5
             return
 
-240         ee = abs((-2090.0_rkf45_real_kind*yp(k) + &
-                      (21970.0_rkf45_real_kind*f3(k) - 15048.0_rkf45_real_kind*f4(k))) + &
-                     (22528.0_rkf45_real_kind*f2(k) - 27360.0_rkf45_real_kind*f5(k)))
+240         ee = abs((-2090.0_rk*yp(k) + &
+                      (21970.0_rk*f3(k) - 15048.0_rk*f4(k))) + &
+                     (22528.0_rk*f2(k) - 27360.0_rk*f5(k)))
             eeoet = max(eeoet, ee/et)
         end do
 
-        esttol = abs(h)*eeoet*scale/752400.0_rkf45_real_kind
+        esttol = abs(h)*eeoet*scale/752400.0_rk
 
-        if (esttol <= 1.0_rkf45_real_kind) goto 260
+        if (esttol <= 1.0_rk) goto 260
 
         !     unsuccessful step
         !                       reduce the stepsize , try again
@@ -504,8 +508,8 @@ contains
 
         hfaild = .true.
         output = .false.
-        s = 0.1_rkf45_real_kind
-        if (esttol < 59049.0_rkf45_real_kind) s = 0.9_rkf45_real_kind/esttol**0.2_rkf45_real_kind
+        s = 0.1_rk
+        if (esttol < 59049.0_rk) s = 0.9_rk/esttol**0.2_rk
         h = s*h
         if (abs(h) > hmin) goto 200
 
@@ -531,9 +535,9 @@ contains
         !                       if step failure has just occurred, next
         !                          stepsize is not allowed to increase
 
-        s = 5.0_rkf45_real_kind
-        if (esttol > 1.889568e-4_rkf45_real_kind) s = 0.9_rkf45_real_kind/esttol**0.2_rkf45_real_kind
-        if (hfaild) s = min(s, 1.0_rkf45_real_kind)
+        s = 5.0_rk
+        if (esttol > 1.889568e-4_rk) s = 0.9_rk/esttol**0.2_rk
+        if (hfaild) s = min(s, 1.0_rk)
         h = sign(max(s*abs(h), hmin), h)
 
         !     end of core integrator
@@ -575,51 +579,51 @@ contains
 
         procedure(fcn) :: f
         integer, intent(in) :: neqn
-        real(kind=rkf45_real_kind) y(neqn), t, h, yp(neqn), f1(neqn), f2(neqn), f3(neqn), f4(neqn), f5(neqn), s(neqn)
+        real(kind=rk) y(neqn), t, h, yp(neqn), f1(neqn), f2(neqn), f3(neqn), f4(neqn), f5(neqn), s(neqn)
 
-        real(kind=rkf45_real_kind) ch
+        real(kind=rk) ch
         integer k
 
-        ch = h/4.0_rkf45_real_kind
+        ch = h/4.0_rk
         do k = 1, neqn
             f5(k) = y(k) + ch*yp(k)
         end do
         call f(t + ch, f5, f1)
 
-        ch = 3.0_rkf45_real_kind*h/32.0_rkf45_real_kind
+        ch = 3.0_rk*h/32.0_rk
         do k = 1, neqn
-            f5(k) = y(k) + ch*(yp(k) + 3.0_rkf45_real_kind*f1(k))
+            f5(k) = y(k) + ch*(yp(k) + 3.0_rk*f1(k))
         end do
-        call f(t + 3.0_rkf45_real_kind*h/8.0_rkf45_real_kind, f5, f2)
+        call f(t + 3.0_rk*h/8.0_rk, f5, f2)
 
-        ch = h/2197.0_rkf45_real_kind
+        ch = h/2197.0_rk
         do k = 1, neqn
-            f5(k) = y(k) + ch*(1932.0_rkf45_real_kind*yp(k) + (7296.0_rkf45_real_kind*f2(k) - 7200.0_rkf45_real_kind*f1(k)))
+            f5(k) = y(k) + ch*(1932.0_rk*yp(k) + (7296.0_rk*f2(k) - 7200.0_rk*f1(k)))
         end do
-        call f(t + 12.0_rkf45_real_kind*h/13.0_rkf45_real_kind, f5, f3)
+        call f(t + 12.0_rk*h/13.0_rk, f5, f3)
 
-        ch = h/4104.0_rkf45_real_kind
+        ch = h/4104.0_rk
         do k = 1, neqn
-            f5(k) = y(k) + ch*((8341.0_rkf45_real_kind*yp(k) - 845.0_rkf45_real_kind*f3(k)) + &
-                               (29440.0_rkf45_real_kind*f2(k) - 32832.0_rkf45_real_kind*f1(k)))
+            f5(k) = y(k) + ch*((8341.0_rk*yp(k) - 845.0_rk*f3(k)) + &
+                               (29440.0_rk*f2(k) - 32832.0_rk*f1(k)))
         end do
         call f(t + h, f5, f4)
 
-        ch = h/20520.0_rkf45_real_kind
+        ch = h/20520.0_rk
         do k = 1, neqn
-            f1(k) = y(k) + ch*((-6080.0_rkf45_real_kind*yp(k) + &
-                                (9295.0_rkf45_real_kind*f3(k) - 5643.0_rkf45_real_kind*f4(k))) &
-                               + (41040.0_rkf45_real_kind*f1(k) - 28352.0_rkf45_real_kind*f2(k)))
+            f1(k) = y(k) + ch*((-6080.0_rk*yp(k) + &
+                                (9295.0_rk*f3(k) - 5643.0_rk*f4(k))) &
+                               + (41040.0_rk*f1(k) - 28352.0_rk*f2(k)))
         end do
-        call f(t + h/2.0_rkf45_real_kind, f1, f5)
+        call f(t + h/2.0_rk, f1, f5)
 
         !> compute approximate solution at t+h
 
-        ch = h/7618050.0_rkf45_real_kind
+        ch = h/7618050.0_rk
         do k = 1, neqn
-            s(k) = y(k) + ch*((902880.0_rkf45_real_kind*yp(k) + (3855735.0_rkf45_real_kind*f3(k) - &
-                                                                 1371249.0_rkf45_real_kind*f4(k))) &
-                              + (3953664.0_rkf45_real_kind*f2(k) + 277020.0_rkf45_real_kind*f5(k)))
+            s(k) = y(k) + ch*((902880.0_rk*yp(k) + (3855735.0_rk*f3(k) - &
+                                                                 1371249.0_rk*f4(k))) &
+                              + (3953664.0_rk*f2(k) + 277020.0_rk*f5(k)))
         end do
 
         return

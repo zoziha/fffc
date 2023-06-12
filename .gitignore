@@ -3,5 +3,7 @@ src/fffc-*
 pkg/*
 fffc-*.zip
 mingw*
+x64/*
+.vs/*
 
 .vscode/*

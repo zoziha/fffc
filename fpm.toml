@@ -12,3 +12,5 @@ link = 'openblas'
 library = true
 [fortran]
 implicit-external = true
+[preprocess]
+[preprocess.cpp]

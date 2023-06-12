@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisualStudioProject ProjectType="typeDynamicLibrary" ProjectCreator="Intel Fortran" Keyword="Dll" Version="11.0" ProjectIdGuid="{DC97A60A-3CA4-4F00-85C3-EBCD639F7EB7}">
+	<Platforms>
+		<Platform Name="Win32"/>
+		<Platform Name="x64"/></Platforms>
+	<Configurations>
+		<Configuration Name="Debug|Win32" ConfigurationType="typeDynamicLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" WarnInterfaces="true" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
+				<Tool Name="VFLinkerTool" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" GenerateDebugInformation="true" SubSystem="subSystemWindows" LinkDLL="true"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/>
+				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration>
+		<Configuration Name="Debug|x64" ConfigurationType="typeDynamicLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" MultiProcessorCompilation="true" Optimization="optimizeDisabled" Preprocess="preprocessYes" WarnInterfaces="true" Traceback="true" BoundsCheck="true" StackFrameCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL" UseMkl="mklParallel"/>
+				<Tool Name="VFLinkerTool" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" GenerateDebugInformation="true" SubSystem="subSystemWindows" LinkDLL="true"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/>
+				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration>
+		<Configuration Name="Release|Win32" ConfigurationType="typeDynamicLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" RuntimeLibrary="rtMultiThreadedDLL"/>
+				<Tool Name="VFLinkerTool" SuppressStartupBanner="true" SubSystem="subSystemWindows" LinkDLL="true"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/>
+				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration>
+		<Configuration Name="Release|x64" ConfigurationType="typeDynamicLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" MultiProcessorCompilation="true" Preprocess="preprocessYes" RuntimeLibrary="rtMultiThreadedDLL" UseMkl="mklParallel"/>
+				<Tool Name="VFLinkerTool" SuppressStartupBanner="true" SubSystem="subSystemWindows" LinkDLL="true"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true" TargetEnvironment="midlTargetAMD64"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/>
+				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration></Configurations>
+	<Files>
+		<Filter Name="Header Files" Filter="fi;fd;h;inc"/>
+		<Filter Name="Resource Files" Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"/>
+		<Filter Name="Source Files" Filter="f90;for;f;fpp;ftn;def;odl;idl">
+		<File RelativePath=".\src\fffc_constants.f90"/>
+		<File RelativePath=".\src\fffc_filesystem.f90"/>
+		<File RelativePath=".\src\fffc_filesystem_basename.f90"/>
+		<File RelativePath=".\src\fffc_filesystem_countlines.f90"/>
+		<File RelativePath=".\src\fffc_filesystem_dirname.f90"/>
+		<File RelativePath=".\src\fffc_filesystem_exists.F90"/>
+		<File RelativePath=".\src\fffc_filesystem_is_windows.f90"/>
+		<File RelativePath=".\src\fffc_filesystem_join.f90"/>
+		<File RelativePath=".\src\fffc_filesystem_mkdir.f90"/>
+		<File RelativePath=".\src\fffc_filesystem_rmdir.f90"/>
+		<File RelativePath=".\src\fffc_filesystem_unix_path.f90"/>
+		<File RelativePath=".\src\fffc_kinds.F90"/>
+		<File RelativePath=".\src\fffc_linalg.f90"/>
+		<File RelativePath=".\src\fffc_linalg_det.F90"/>
+		<File RelativePath=".\src\fffc_linalg_diag.f90"/>
+		<File RelativePath=".\src\fffc_linalg_eye.f90"/>
+		<File RelativePath=".\src\fffc_linalg_gemm.F90"/>
+		<File RelativePath=".\src\fffc_linalg_inv.F90"/>
+		<File RelativePath=".\src\fffc_linalg_inv_func.f90"/>
+		<File RelativePath=".\src\fffc_linalg_linv.f90"/>
+		<File RelativePath=".\src\fffc_linalg_rinv.f90"/>
+		<File RelativePath=".\src\fffc_linalg_solve.F90"/>
+		<File RelativePath=".\src\fffc_linalg_solve_func.f90"/>
+		<File RelativePath=".\src\fffc_math.f90"/>
+		<File RelativePath=".\src\fffc_math_arange.f90"/>
+		<File RelativePath=".\src\fffc_math_arg.f90"/>
+		<File RelativePath=".\src\fffc_math_cross_product.f90"/>
+		<File RelativePath=".\src\fffc_math_diff.f90"/>
+		<File RelativePath=".\src\fffc_math_is_close.f90"/>
+		<File RelativePath=".\src\fffc_math_linspace.f90"/>
+		<File RelativePath=".\src\fffc_module.f90"/>
+		<File RelativePath=".\src\fffc_random.f90"/>
+		<File RelativePath=".\src\fffc_random_randn.f90"/>
+		<File RelativePath=".\src\fffc_random_randu.f90"/>
+		<File RelativePath=".\src\fffc_stats.f90"/>
+		<File RelativePath=".\src\fffc_stats_mean.f90"/>
+		<File RelativePath=".\src\fffc_string.f90"/>
+		<File RelativePath=".\src\fffc_string_to_lower.f90"/>
+		<File RelativePath=".\src\fffc_string_to_string.f90"/>
+		<File RelativePath=".\src\fffc_string_to_upper.f90"/>
+		<File RelativePath=".\src\fffc_terminal.F90"/>
+		<File RelativePath=".\src\fffc_time.f90"/>
+		<File RelativePath=".\src\fffc_utils.f90"/>
+		<File RelativePath=".\src\fffc_utils_bubble_sort.f90"/>
+		<File RelativePath=".\src\fffc_utils_is_env.f90"/>
+		<File RelativePath=".\src\fffc_utils_swap.f90"/>
+		<File RelativePath=".\src\random.f90"/>
+		<File RelativePath=".\src\rkf45_module.f90"/></Filter></Files>
+	<Globals/></VisualStudioProject>
