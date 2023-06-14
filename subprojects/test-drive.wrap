@@ -1,0 +1,4 @@
+[wrap-git]
+directory = test-drive
+url = https://gitee.com/fortran-base/test-drive
+revision = 68e22b87d9776d136c6ba69cc55fa43c59967bb6

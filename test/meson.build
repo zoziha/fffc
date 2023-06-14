@@ -1,13 +1,32 @@
+testdrive_dep = dependency('test-drive', required: false, method: 'pkg-config')
+if not testdrive_dep.found()
+    testdrive_dep = subproject('test-drive').get_variable('testdrive_dep')
+endif
+
+test_src = files(
+    'test_fffc_filesystem.F90',
+)
+
+test_lib = library(
+    'test_fffc',
+    sources: test_src,
+    link_with: fffc_lib,
+    dependencies: testdrive_dep,
+)
+
 test(
-    'example_countlines',
+    'func_api',
     executable(
-        'example_countlines',
-        'example_countlines.f90',
+        'test_func_api',
+        'test_func_api.f90',
+        link_with: test_lib,
         dependencies: [
             fffc_dep,
-        ],
-    ),
+            testdrive_dep,
+        ]
+    )
 )
+
 test(
     'example_dirname',
     executable(

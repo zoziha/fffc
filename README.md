@@ -19,6 +19,7 @@
 ```sh
 > meson setup _build -Dprefix=/mingw64
 > meson install --destdir 'C:\msys64\' -C _build
+> meson test -C _build func_api -v  # 单元测试
 ```
 
 理论上，Meson 支持 Windows/macOS/Linux 下的 gfortran, macOS/Linux 下的 ifort。

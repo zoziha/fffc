@@ -1,5 +1,6 @@
 submodule (fffc_filesystem) fffc_filesystem_countlines
 contains
+
     module procedure countlines
         integer :: istat, iunit
 
@@ -11,5 +12,7 @@ contains
             countlines = countlines + 1
         end do
         close (iunit)
+
     end procedure countlines
+
 end submodule fffc_filesystem_countlines
