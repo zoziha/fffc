@@ -1,4 +1,8 @@
+!> 文件系统
 module fffc_filesystem
+
+    implicit none
+
     interface
         module function is_windows()
             logical :: is_windows
@@ -30,6 +34,7 @@ module fffc_filesystem
             character(len=:), allocatable :: base
         end function basename
     end interface
+
     interface operator(.join.)
         module function join(path, name)
             character(len=*), intent(in) :: path
@@ -37,4 +42,5 @@ module fffc_filesystem
             character(len=len(path) + len(name) + 1) :: join
         end function join
     end interface
+
 end module fffc_filesystem

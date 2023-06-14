@@ -2,7 +2,7 @@
 
 # Fortran 免费函数集合
 
-![FFFC](https://img.shields.io/badge/FFFC-v1.1.20230515-blueviolet)
+![FFFC](https://img.shields.io/badge/FFFC-v1.2.20230614-blueviolet)
 ![Language](https://img.shields.io/badge/-Fortran-734f96?logo=fortran&logoColor=white)
 [![license](https://img.shields.io/badge/License-BSD--3-brightgreen)](LICENSE)
 

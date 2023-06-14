@@ -3,7 +3,7 @@
 _realname=fffc
 pkgbase=mingw-w64-${_realname}
 pkgname="${MINGW_PACKAGE_PREFIX}-${_realname}"
-pkgver=1.1.20230515
+pkgver=1.2.20230614
 pkgrel=1
 arch=('any')
 mingw_arch=('mingw32' 'mingw64' 'ucrt64')
@@ -19,7 +19,7 @@ makedepends=("${MINGW_PACKAGE_PREFIX}-fc"
              "${MINGW_PACKAGE_PREFIX}-pkg-config"
              "${MINGW_PACKAGE_PREFIX}-openblas")
 source=(${_realname}-${pkgver}.zip::"${url}/repository/archive/master.zip")
-sha256sums=('0f084c76f2a7641c609a39d6c315df3cd5fbfd9497e587dfaf37480bea615cfe')
+sha256sums=('57a05e438029e1d2259ee641e9e7bbf5d3d0007bfd6c800c427d30b71d0252ee')
 
 build() {
     mkdir -p build-${MSYSTEM} && cd build-${MSYSTEM}

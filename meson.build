@@ -1,7 +1,7 @@
 project(
     'fffc',
     'fortran',
-    version: '1.1.20230515',
+    version: '1.2.20230614',
     default_options: [
         'buildtype=debugoptimized',
         'fortran_std=f2008',
