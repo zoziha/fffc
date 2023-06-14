@@ -1,9 +1,12 @@
+<div align='center'>
+
 # Fortran 免费函数集合
 
 ![FFFC](https://img.shields.io/badge/FFFC-v1.1.20230515-blueviolet)
+![Language](https://img.shields.io/badge/-Fortran-734f96?logo=fortran&logoColor=white)
 [![license](https://img.shields.io/badge/License-BSD--3-brightgreen)](LICENSE)
-![Fortran](https://img.shields.io/badge/Fortran-^2008-purple)
 
+</div>
 
 将本库代码编译为链接库，免费使用功能，如果觉得功能不好用，欢迎更新。
 
