@@ -1,0 +1,25 @@
+name: doc-deployment
+
+on: [workflow_dispatch]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+
+    - name: install dependencies
+      run: pip install ford
+
+    - name: ford build
+      run: |
+        ford FORD.md -o _build
+
+    - name: deploy pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      if: github.repository == 'zoziha/fffc' && ( startsWith( github.ref, 'refs/tags/' ) || github.ref == 'refs/heads/master' )
+      with:
+        folder: _build

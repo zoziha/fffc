@@ -25,7 +25,6 @@ jobs:
             mingw-w64-x86_64-fpm
             mingw-w64-x86_64-pkgconf
             mingw-w64-x86_64-meson
-            mingw-w64-x86_64-python-ford
 
       - name: fpm test
         run: |
@@ -35,13 +34,3 @@ jobs:
         run: |
           meson setup _build -Dbuildtype=debug
           meson test -C _build -v func_api
-
-      - name: ford build
-        run: |
-          ford FORD.md
-
-      - name: deploy pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        if: github.repository == 'zoziha/fffc' && ( startsWith( github.ref, 'refs/tags/' ) || github.ref == 'refs/heads/master' )
-        with:
-          folder: _build/ford
