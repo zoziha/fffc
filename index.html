@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Fortran免费函数集合">
+    <meta name="author" content="左志华" >
+    <link rel="icon" href="./favicon.png">
+
+    <title> Fortran free function collection </title>
+
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/pygments.css" rel="stylesheet">
+    <link href="./css/font-awesome.min.css" rel="stylesheet">
+    <link href="./css/local.css" rel="stylesheet">
+      <link  href="./tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+         <script src="./js/jquery-2.1.3.min.js"></script>
+         <script src="./js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="./index.html">Fortran free function collection </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+                 data-toggle="dropdown" role="button"
+                 aria-haspopup="true"
+                 aria-expanded="false">
+                 Contents <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                    <li><a href="./lists/files.html">Source Files</a></li>
+                  <li><a href="./lists/modules.html">Modules</a></li>
+                  <li><a href="./lists/procedures.html">Procedures</a></li>
+                  <li><a href="./lists/types.html">Derived Types</a></li>
+              </ul>
+            </li>
+                <li class="visible-xs hidden-sm visible-lg">
+                  <a href="./lists/files.html">Source Files</a>
+                </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="./lists/modules.html">Modules</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="./lists/procedures.html">Procedures</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="./lists/types.html">Derived Types</a>
+              </li>
+          </ul>
+            <form action="./search.html" class="navbar-form navbar-right" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+              </div>
+              <!--
+                  <button type="submit" class="btn btn-default">Submit</button>
+                  -->
+            </form>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <p>Fortran免费函数集合</p>
+	<p> Find us on&hellip;</p>
+        <p>
+          <a class="btn btn-lg btn-primary" href="https://github.com/zoziha/fffc" role="button">GitHub</a>
+          <a class="btn btn-lg btn-primary" href="https://gitee.com/ship-stack/fffc" role="button">The Web</a>
+        </p>
+      </div>
+
+      <div class="row" id='text'>
+        <div class="col-md-8">
+          <h1>Fortran free function collection</h1>
+          <h1 id="fffc">FFFC</h1>
+<p>这主要是我个人编程用到的<strong>通用</strong>的函数集合，包括一些常用的数学函数、字符串操作、文件系统操作、随机数生成、统计函数、线性代数等等。</p>
+<p>除此之外，我还编制了用于船海专业的函数库，它对其它领域的人可能没有什么帮助，没有包含在这里。
+并且，我还常常使用一些函数库，它们可以作为本库在数值算法上的补充：</p>
+<ul>
+<li><a href="http://www.fftw.org/">FFTW</a>：快速傅里叶变换</li>
+<li><a href="http://www.netlib.org/lapack/">LAPACK</a>：线性代数</li>
+<li><a href="https://www.openblas.net/">OpenBLAS</a>：线性代数</li>
+<li><a href="https://github.com/fortran-lang/minpack">minpack</a>：最小二乘法</li>
+<li><a href="https://github.com/0382/argparse-f">argparse-f</a>：命令行参数解析</li>
+<li><a href="https://github.com/HDFGroup/hdf5">hdf5</a>：高性能数据格式</li>
+<li><a href="https://github.com/toml-f/toml-f">toml-f</a>：TOML格式文件解析</li>
+<li><a href="https://github.com/jacobwilliams/json-fortran">json-fortran</a>：JSON格式文件解析</li>
+<li><a href="https://github.com/LKedward/fhash">fhash</a>：哈希表</li>
+<li><a href="https://github.com/interkosmos/fortran-lua53">fortran-lua</a>：Lua脚本解析</li>
+</ul>
+<p>别忘了，Fortran语言的内置函数库也是很强大的，配置文件也可以采用Namelist格式，也可以借助接口使用C库。</p>
+<p>一些有用的Fortran编程工具：</p>
+<ul>
+<li><a href="https://github.com/fortran-lang/fpm">fpm</a>：Fortran包管理器</li>
+<li><a href="https://mesonbuild.com/">meson</a>：构建系统</li>
+<li><a href="https://cmake.org/">cmake</a>：构建系统</li>
+<li><a href="https://gcc.gnu.org/fortran/">gfortran</a>：Fortran编译器</li>
+<li><a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/fortran-compiler.html">ifort</a>：Fortran编译器</li>
+<li><a href="https://software.intel.com/content/www/us/en/develop/tools/vtune-profiler.html">vtune</a>：性能分析工具</li>
+<li><a href="https://www.gnu.org/software/gprof/">gprof</a>：性能分析工具</li>
+<li><a href="https://valgrind.org/">valgrind</a>：内存泄漏检测工具</li>
+<li><a href="https://www.gnu.org/software/gdb/">gdb</a>：调试工具</li>
+<li><a href="https://www.doxygen.nl/index.html">doxygen</a>：文档生成工具</li>
+<li><a href="https://github.com/Fortran-FOSS-Programmers/ford">ford</a>：文档生成工具</li>
+<li><a href="https://github.com/pseewald/fprettify">fprettify</a>：Fortran代码格式化工具</li>
+<li><a href="https://code.visualstudio.com/">vscode</a>：编辑器</li>
+<li><a href="https://www.rizonesoft.com/downloads/notepad3/">notepad3</a>：编辑器</li>
+<li><a href="https://www.vim.org/">vim</a>：编辑器</li>
+<li><a href="https://www.gnu.org/software/emacs/">emacs</a>：编辑器</li>
+<li><a href="https://git-scm.com/">git</a>：版本控制工具</li>
+<li><a href="https://github.com/">github</a>：代码托管平台</li>
+<li><a href="https://gitee.com/">gitee</a>：代码托管平台</li>
+<li><a href="https://github.com/fortran-lang/fortls">fortls</a>：Fortran语言服务器</li>
+<li><a href="https://www.msys2.org/">msys2</a>：Windows下的Linux环境</li>
+<li><a href="https://www.cygwin.com/">cygwin</a>：Windows下的Linux环境</li>
+<li><a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">wsl</a>：Windows下的Linux环境</li>
+<li><a href="https://github.com/fortran-lang/vscode-fortran-support">vscode-fortran-support</a>：VSCode插件</li>
+<li><a href="https://fortran-lang.discourse.group/">fortran-discourse</a>：Fortran讨论组</li>
+<li><a href="https://fortran-lang.org/">fortran网站</a>：Fortran网站</li>
+<li><a href="https://octave.org/">octave</a>：Matlab的开源替代品</li>
+<li><a href="https://docs.microsoft.com/en-us/powershell/">powershell</a>：Windows下的脚本语言</li>
+<li><a href="https://starship.rs/">starship</a>：命令行提示符</li>
+<li><a href="https://fishshell.com/">fish</a>：命令行提示符</li>
+<li><a href="https://visualstudio.microsoft.com/">visual-studio</a>：IDE</li>
+<li><a href="http://www.codeblocks.org/">codeblocks</a>：IDE</li>
+<li><a href="https://lfortran.org/">lfortran</a>：Fortran编译器</li>
+<li><a href="https://j3-fortran.org/">j3-fortran</a>：Fortran标准化组织</li>
+<li><a href="https://flang.llvm.org/docs/">flang</a>：Fortran编译器</li>
+<li><a href="https://developer.nvidia.com/hpc-sdk">nvfortran</a>：Fortran编译器</li>
+</ul>
+        </div>
+        <div class="col-md-4">
+	  <div class="well">
+          <h2>Developer Info</h2>
+          <h4>左志华</h4>
+          <p>哈尔滨工程大学-船舶与海洋结构物设计制造</p>
+            <div class="text-center"><div class="btn-group" role="group">
+              <a class="btn btn-lg btn-primary" href="mailto:zuo.zhihua@qq.com"><i class="fa fa-envelope fa-lg"></i></a>
+             <a class="btn btn-lg btn-primary" href="https://gitee.com/zoziha"><i class="fa fa-globe fa-lg"></i></a>
+            </div></div>
+       </div>
+       </div>
+      </div>
+        <div class="row">
+          <hr>
+          <div class="col-xs-6 col-sm-3">
+            <div>
+              <h3>Source Files</h3>
+              <ul><li><a href='./sourcefile/fffc_constants.f90.html'>fffc_constants.f90</a></li><li><a href='./sourcefile/fffc_filesystem.f90.html'>fffc_filesystem.f90</a></li><li><a href='./sourcefile/fffc_filesystem_basename.f90.html'>fffc_filesystem_basename.f90</a></li><li><a href='./sourcefile/fffc_filesystem_countlines.f90.html'>fffc_filesystem_countlines.f90</a></li><li><a href='./sourcefile/fffc_filesystem_dirname.f90.html'>fffc_filesystem_dirname.f90</a></li><li><a href='./sourcefile/fffc_filesystem_exists.f90.html'>fffc_filesystem_exists.F90</a></li><li><a href='./sourcefile/fffc_filesystem_is_windows.f90.html'>fffc_filesystem_is_windows.f90</a></li><li><a href='./sourcefile/fffc_filesystem_join.f90.html'>fffc_filesystem_join.f90</a></li><li><a href='./sourcefile/fffc_filesystem_mkdir.f90.html'>fffc_filesystem_mkdir.f90</a></li><li><a href='./sourcefile/fffc_filesystem_rmdir.f90.html'>fffc_filesystem_rmdir.f90</a></li></ul>
+            </div>
+            <div>
+              <ul>
+                <li><a href="./lists/files.html"><em>All source files&hellip;</em></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <div>
+              <h3>Modules</h3>
+              <ul><li><a href='./module/fffc_constants.html'>fffc_constants</a></li><li><a href='./module/fffc_filesystem.html'>fffc_filesystem</a></li><li><a href='./module/fffc_kinds.html'>fffc_kinds</a></li><li><a href='./module/fffc_linalg.html'>fffc_linalg</a></li><li><a href='./module/fffc_math.html'>fffc_math</a></li><li><a href='./module/fffc_module.html'>fffc_module</a></li><li><a href='./module/fffc_random.html'>fffc_random</a></li><li><a href='./module/fffc_stats.html'>fffc_stats</a></li><li><a href='./module/fffc_string.html'>fffc_string</a></li><li><a href='./module/fffc_terminal.html'>fffc_terminal</a></li></ul>
+            </div>
+            <div>
+              <ul>
+                <li><a href="./lists/modules.html"><em>All modules&hellip;</em></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <div>
+              <h3>Procedures</h3>
+              <ul><li><a href='./interface/arange.html'>arange</a></li><li><a href='./interface/arg.html'>arg</a></li><li><a href='./interface/basename.html'>basename</a></li><li><a href='./proc/bin_prob.html'>bin_prob</a></li><li><a href='./interface/bubble_sort.html'>bubble_sort</a></li><li><a href='./interface/countlines.html'>countlines</a></li><li><a href='./interface/cross_product.html'>cross_product</a></li><li><a href='./interface/det.html'>det</a></li><li><a href='./interface/diag.html'>diag</a></li><li><a href='./interface/diff.html'>diff</a></li></ul>
+            </div>
+            <div>
+              <ul>
+                <li><a href="./lists/procedures.html"><em>All procedures&hellip;</em></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-xs-6 col-sm-3">
+            <div>
+              <h3>Derived Types</h3>
+              <ul><li><a href='./type/terminal.html'>terminal</a></li><li><a href='./type/timer.html'>timer</a></li></ul>
+            </div>
+            <div>
+              <ul>
+                <li><a href="./lists/types.html"><em>All derived types&hellip;</em></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6 col-md-6"><p>Fortran free function collection was developed by 左志华<br>&copy; 2023 
+</p>
+          </div>
+          <div class="col-xs-6 col-md-6">
+            <p class="text-right">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2023-06-16 10:57              </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+         ================================================== -->
+         <!-- Placed at the end of the document so the pages load faster -->
+    <!--
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        -->
+        <script src="./js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="./js/ie10-viewport-bug-workaround.js"></script>
+
+        <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="./tipuesearch/tipuesearch_content.js"></script>
+          <script src="./tipuesearch/tipuesearch_set.js"></script>
+          <script src="./tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>

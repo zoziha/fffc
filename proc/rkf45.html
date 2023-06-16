@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="Fortran免费函数集合">
+    <meta name="author" content="左志华" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>rkf45 &ndash; Fortran free function collection</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+      <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+         <script src="../js/jquery-2.1.3.min.js"></script>
+         <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Fortran free function collection </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+                 data-toggle="dropdown" role="button"
+                 aria-haspopup="true"
+                 aria-expanded="false">
+                 Contents <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                    <li><a href="../lists/files.html">Source Files</a></li>
+                  <li><a href="../lists/modules.html">Modules</a></li>
+                  <li><a href="../lists/procedures.html">Procedures</a></li>
+                  <li><a href="../lists/types.html">Derived Types</a></li>
+              </ul>
+            </li>
+                <li class="visible-xs hidden-sm visible-lg">
+                  <a href="../lists/files.html">Source Files</a>
+                </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/modules.html">Modules</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/procedures.html">Procedures</a>
+              </li>
+              <li class="visible-xs hidden-sm visible-lg">
+                <a href="../lists/types.html">Derived Types</a>
+              </li>
+          </ul>
+            <form action="../search.html" class="navbar-form navbar-right" role="search">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+              </div>
+              <!--
+                  <button type="submit" class="btn btn-default">Submit</button>
+                  -->
+            </form>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+  <div class="row">
+    <h1>rkf45
+      <small>Subroutine</small>
+      
+    </h1>
+      <div class="row" id="info-bar">
+    <div class="col-lg-12">
+      <div class="well well-sm">
+        <ul class="list-inline" style="margin-bottom:0px;display:inline">
+
+          <li id="statements"><i class="fa fa-list-ol"></i>
+            <a data-toggle="tooltip"
+               data-placement="bottom" data-html="true"
+               title=" 1.5% of total for procedures.">20 statements</a>
+          </li>
+
+            <li id="source-file">
+              <i class="fa fa-code"></i>
+              <a href="../src/rkf45_module.f90"> Source File</a>
+            </li>
+        </ul>
+        <ol class="breadcrumb in-well text-right">
+              <li><a href='../sourcefile/rkf45_module.f90.html'>rkf45_module.f90</a></li>
+              <li><a href='../module/rkf45_module.html'>rkf45_module</a></li>
+          <li class="active">rkf45</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <script>
+    $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+      <div id="sidebar">
+      <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="panel panel-primary">
+      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/rkf45.html#src">rkf45</a>
+      </div>
+    </div>
+
+
+  </div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    <h2>public  subroutine rkf45(f, neqn, y, t, tout, relerr, abserr, iflag, work, iwork)  
+</h2>
+    
+
+    <p>rkf45 is primarily designed to solve non-stiff and mildly stiff
+differential equations when derivative evaluations are inexpensive.
+rkf45 should generally not be used when the user is demanding
+high accuracy.
+在计算量不大的计算中，rkf45主要用于求解非刚性和轻微刚性的常微分方程。</p>
+
+
+    <h3>Arguments</h3>
+        <table class="table table-striped varlist">
+    <thead>
+      <tr>
+        <th>Type</th>
+<th>Intent</th><th>Optional</th>        <th>Attributes</th>
+        <th></th>
+        <th>Name</th>
+        <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-f~2"></span>
+              procedure(fcn)
+            </td>
+<td></td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>f</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-neqn"></span>
+              integer,
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>neqn</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-y"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>y</strong>(neqn)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-t~2"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>t</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-tout"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>tout</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-relerr"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>relerr</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-abserr"></span>
+              real(kind=rk),
+            </td>
+<td>intent(in)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>abserr</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iflag"></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iflag</strong></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-work"></span>
+              real(kind=rk),
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>work</strong>(*)</td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-iwork"></span>
+              integer,
+            </td>
+<td>intent(inout)</td>
+              <td></td>            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>iwork</strong>(5)</td>
+            <td>
+                
+            </td>
+        </tr>
+    </tbody>
+  </table>
+
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+        <h3>Contents</h3>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="panel panel-primary">
+      <div class="panel-heading text-left"><h3 class="panel-title">Source Code</h3></div>
+      <div class="list-group">
+        <a class="list-group-item" href="../proc/rkf45.html#src">rkf45</a>
+      </div>
+    </div>
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+
+    
+    
+
+    
+    
+
+
+    
+    <section>
+    <h2><span class="anchor" id="src"></span>Source Code</h2>
+    <div class="highlight"><pre><span></span><span class="w">    </span><span class="k">subroutine </span><span class="n">rkf45</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">neqn</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">tout</span><span class="p">,</span><span class="w"> </span><span class="n">relerr</span><span class="p">,</span><span class="w"> </span><span class="n">abserr</span><span class="p">,</span><span class="w"> </span><span class="n">iflag</span><span class="p">,</span><span class="w"> </span><span class="n">work</span><span class="p">,</span><span class="w"> </span><span class="n">iwork</span><span class="p">)</span><span class="w"></span>
+
+<span class="w">        </span><span class="c">!     fehlberg fourth-fifth order runge-kutta method</span>
+
+<span class="w">        </span><span class="c">!     written by h.a.watts and l.f.shampine</span>
+<span class="w">        </span><span class="c">!                   sandia laboratories</span>
+<span class="w">        </span><span class="c">!                  albuquerque,new mexico</span>
+
+<span class="w">        </span><span class="c">! abstract</span>
+
+<span class="w">        </span><span class="c">!    subroutine  rkf45  integrates a system of neqn first order</span>
+<span class="w">        </span><span class="c">!    ordinary differential equations of the form</span>
+<span class="w">        </span><span class="c">!             dy(i)/dt = f(t,y(1),y(2),...,y(neqn))</span>
+<span class="w">        </span><span class="c">!              where the y(i) are given at t .</span>
+<span class="w">        </span><span class="c">!    typically the subroutine is used to integrate from t to tout but it</span>
+<span class="w">        </span><span class="c">!    can be used as a one-step integrator to advance the solution a</span>
+<span class="w">        </span><span class="c">!    single step in the direction of tout.  on return the parameters in</span>
+<span class="w">        </span><span class="c">!    the call list are set for continuing the integration. the user has</span>
+<span class="w">        </span><span class="c">!    only to call rkf45 again (and perhaps define a new value for tout).</span>
+<span class="w">        </span><span class="c">!    actually, rkf45 is an interfacing routine which calls subroutine</span>
+<span class="w">        </span><span class="c">!    rkfs for the solution.  rkfs in turn calls subroutine  fehl which</span>
+<span class="w">        </span><span class="c">!    computes an approximate solution over one step.</span>
+
+<span class="w">        </span><span class="c">!    rkf45  uses the runge-kutta-fehlberg (4,5)  method described</span>
+<span class="w">        </span><span class="c">!    in the reference</span>
+<span class="w">        </span><span class="c">!    e.fehlberg , low-order classical runge-kutta formulas with stepsize</span>
+<span class="w">        </span><span class="c">!                 control , nasa tr r-315</span>
+
+<span class="w">        </span><span class="c">!    the performance of rkf45 is illustrated in the reference</span>
+<span class="w">        </span><span class="c">!    l.f.shampine,h.a.watts,s.davenport, solving non-stiff ordinary</span>
+<span class="w">        </span><span class="c">!                 differential equations-the state of the art ,</span>
+<span class="w">        </span><span class="c">!                 sandia laboratories report sand75-0182 ,</span>
+<span class="w">        </span><span class="c">!                 to appear in siam review.</span>
+
+<span class="w">        </span><span class="c">!    the parameters represent-</span>
+<span class="w">        </span><span class="c">!      f -- subroutine f(t,y,yp) to evaluate derivatives yp(i)=dy(i)/dt</span>
+<span class="w">        </span><span class="c">!      neqn -- number of equations to be integrated</span>
+<span class="w">        </span><span class="c">!      y(*) -- solution vector at t</span>
+<span class="w">        </span><span class="c">!      t -- independent variable</span>
+<span class="w">        </span><span class="c">!      tout -- output point at which solution is desired</span>
+<span class="w">        </span><span class="c">!      relerr,abserr -- relative and absolute error tolerances for local</span>
+<span class="w">        </span><span class="c">!            error test. at each step the code requires that</span>
+<span class="w">        </span><span class="c">!                 abs(local error) .le. relerr*abs(y) + abserr</span>
+<span class="w">        </span><span class="c">!            for each component of the local error and solution vectors</span>
+<span class="w">        </span><span class="c">!      iflag -- indicator for status of integration</span>
+<span class="w">        </span><span class="c">!      work(*) -- array to hold information internal to rkf45 which is</span>
+<span class="w">        </span><span class="c">!            necessary for subsequent calls. must be dimensioned</span>
+<span class="w">        </span><span class="c">!            at least  3+6*neqn</span>
+<span class="w">        </span><span class="c">!      iwork(*) -- integer array used to hold information internal to</span>
+<span class="w">        </span><span class="c">!            rkf45 which is necessary for subsequent calls. must be</span>
+<span class="w">        </span><span class="c">!            dimensioned at least  5</span>
+
+<span class="w">        </span><span class="c">!  first call to rkf45</span>
+
+<span class="w">        </span><span class="c">!    the user must provide storage in his calling program for the arrays</span>
+<span class="w">        </span><span class="c">!    in the call list  -      y(neqn) , work(3+6*neqn) , iwork(5)  ,</span>
+<span class="w">        </span><span class="c">!    declare f in an external statement, supply subroutine f(t,y,yp) and</span>
+<span class="w">        </span><span class="c">!    initialize the following parameters-</span>
+
+<span class="w">        </span><span class="c">!      neqn -- number of equations to be integrated.  (neqn .ge. 1)</span>
+<span class="w">        </span><span class="c">!      y(*) -- vector of initial conditions</span>
+<span class="w">        </span><span class="c">!      t -- starting point of integration , must be a variable</span>
+<span class="w">        </span><span class="c">!      tout -- output point at which solution is desired.</span>
+<span class="w">        </span><span class="c">!            t=tout is allowed on the first call only, in which case</span>
+<span class="w">        </span><span class="c">!            rkf45 returns with iflag=2 if continuation is possible.</span>
+<span class="w">        </span><span class="c">!      relerr,abserr -- relative and absolute local error tolerances</span>
+<span class="w">        </span><span class="c">!            which must be non-negative. relerr must be a variable while</span>
+<span class="w">        </span><span class="c">!            abserr may be a constant. the code should normally not be</span>
+<span class="w">        </span><span class="c">!            used with relative error control smaller than about 1.e-8 .</span>
+<span class="w">        </span><span class="c">!            to avoid limiting precision difficulties the code requires</span>
+<span class="w">        </span><span class="c">!            relerr to be larger than an internally computed relative</span>
+<span class="w">        </span><span class="c">!            error parameter which is machine dependent. in particular,</span>
+<span class="w">        </span><span class="c">!            pure absolute error is not permitted. if a smaller than</span>
+<span class="w">        </span><span class="c">!            allowable value of relerr is attempted, rkf45 increases</span>
+<span class="w">        </span><span class="c">!            relerr appropriately and returns control to the user before</span>
+<span class="w">        </span><span class="c">!            continuing the integration.</span>
+<span class="w">        </span><span class="c">!      iflag -- +1,-1  indicator to initialize the code for each new</span>
+<span class="w">        </span><span class="c">!            problem. normal input is +1. the user should set iflag=-1</span>
+<span class="w">        </span><span class="c">!            only when one-step integrator control is essential. in this</span>
+<span class="w">        </span><span class="c">!            case, rkf45 attempts to advance the solution a single step</span>
+<span class="w">        </span><span class="c">!            in the direction of tout each time it is called. since this</span>
+<span class="w">        </span><span class="c">!            mode of operation results in extra computing overhead, it</span>
+<span class="w">        </span><span class="c">!            should be avoided unless needed.</span>
+
+<span class="w">        </span><span class="c">!  output from rkf45</span>
+
+<span class="w">        </span><span class="c">!      y(*) -- solution at t</span>
+<span class="w">        </span><span class="c">!      t -- last point reached in integration.</span>
+<span class="w">        </span><span class="c">!      iflag = 2 -- integration reached tout. indicates successful retur</span>
+<span class="w">        </span><span class="c">!                   and is the normal mode for continuing integration.</span>
+<span class="w">        </span><span class="c">!            =-2 -- a single successful step in the direction of tout</span>
+<span class="w">        </span><span class="c">!                   has been taken. normal mode for continuing</span>
+<span class="w">        </span><span class="c">!                   integration one step at a time.</span>
+<span class="w">        </span><span class="c">!            = 3 -- integration was not completed because relative error</span>
+<span class="w">        </span><span class="c">!                   tolerance was too small. relerr has been increased</span>
+<span class="w">        </span><span class="c">!                   appropriately for continuing.</span>
+<span class="w">        </span><span class="c">!            = 4 -- integration was not completed because more than</span>
+<span class="w">        </span><span class="c">!                   3000 derivative evaluations were needed. this</span>
+<span class="w">        </span><span class="c">!                   is approximately 500 steps.</span>
+<span class="w">        </span><span class="c">!            = 5 -- integration was not completed because solution</span>
+<span class="w">        </span><span class="c">!                   vanished making a pure relative error test</span>
+<span class="w">        </span><span class="c">!                   impossible. must use non-zero abserr to continue.</span>
+<span class="w">        </span><span class="c">!                   using the one-step integration mode for one step</span>
+<span class="w">        </span><span class="c">!                   is a good way to proceed.</span>
+<span class="w">        </span><span class="c">!            = 6 -- integration was not completed because requested</span>
+<span class="w">        </span><span class="c">!                   accuracy could not be achieved using smallest</span>
+<span class="w">        </span><span class="c">!                   allowable stepsize. user must increase the error</span>
+<span class="w">        </span><span class="c">!                   tolerance before continued integration can be</span>
+<span class="w">        </span><span class="c">!                   attempted.</span>
+<span class="w">        </span><span class="c">!            = 7 -- it is likely that rkf45 is inefficient for solving</span>
+<span class="w">        </span><span class="c">!                   this problem. too much output is restricting the</span>
+<span class="w">        </span><span class="c">!                   natural stepsize choice. use the one-step integrator</span>
+<span class="w">        </span><span class="c">!                   mode.</span>
+<span class="w">        </span><span class="c">!            = 8 -- invalid input parameters</span>
+<span class="w">        </span><span class="c">!                   this indicator occurs if any of the following is</span>
+<span class="w">        </span><span class="c">!                   satisfied -   neqn .le. 0</span>
+<span class="w">        </span><span class="c">!                                 t=tout  and  iflag .ne. +1 or -1</span>
+<span class="w">        </span><span class="c">!                                 relerr or abserr .lt. 0.</span>
+<span class="w">        </span><span class="c">!                                 iflag .eq. 0  or  .lt. -2  or  .gt. 8</span>
+<span class="w">        </span><span class="c">!      work(*),iwork(*) -- information which is usually of no interest</span>
+<span class="w">        </span><span class="c">!                   to the user but necessary for subsequent calls.</span>
+<span class="w">        </span><span class="c">!                   work(1),...,work(neqn) contain the first derivatives</span>
+<span class="w">        </span><span class="c">!                   of the solution vector y at t. work(neqn+1) contains</span>
+<span class="w">        </span><span class="c">!                   the stepsize h to be attempted on the next step.</span>
+<span class="w">        </span><span class="c">!                   iwork(1) contains the derivative evaluation counter.</span>
+
+<span class="w">        </span><span class="c">!  subsequent calls to rkf45</span>
+
+<span class="w">        </span><span class="c">!    subroutine rkf45 returns with all information needed to continue</span>
+<span class="w">        </span><span class="c">!    the integration. if the integration reached tout, the user need onl</span>
+<span class="w">        </span><span class="c">!    define a new tout and call rkf45 again. in the one-step integrator</span>
+<span class="w">        </span><span class="c">!    mode (iflag=-2) the user must keep in mind that each step taken is</span>
+<span class="w">        </span><span class="c">!    in the direction of the current tout. upon reaching tout (indicated</span>
+<span class="w">        </span><span class="c">!    by changing iflag to 2),the user must then define a new tout and</span>
+<span class="w">        </span><span class="c">!    reset iflag to -2 to continue in the one-step integrator mode.</span>
+
+<span class="w">        </span><span class="c">!    if the integration was not completed but the user still wants to</span>
+<span class="w">        </span><span class="c">!    continue (iflag=3,4 cases), he just calls rkf45 again. with iflag=3</span>
+<span class="w">        </span><span class="c">!    the relerr parameter has been adjusted appropriately for continuing</span>
+<span class="w">        </span><span class="c">!    the integration. in the case of iflag=4 the function counter will</span>
+<span class="w">        </span><span class="c">!    be reset to 0 and another 3000 function evaluations are allowed.</span>
+
+<span class="w">        </span><span class="c">!    however,in the case iflag=5, the user must first alter the error</span>
+<span class="w">        </span><span class="c">!    criterion to use a positive value of abserr before integration can</span>
+<span class="w">        </span><span class="c">!    proceed. if he does not,execution is terminated.</span>
+
+<span class="w">        </span><span class="c">!    also,in the case iflag=6, it is necessary for the user to reset</span>
+<span class="w">        </span><span class="c">!    iflag to 2 (or -2 when the one-step integration mode is being used)</span>
+<span class="w">        </span><span class="c">!    as well as increasing either abserr,relerr or both before the</span>
+<span class="w">        </span><span class="c">!    integration can be continued. if this is not done, execution will</span>
+<span class="w">        </span><span class="c">!    be terminated. the occurrence of iflag=6 indicates a trouble spot</span>
+<span class="w">        </span><span class="c">!    (solution is changing rapidly,singularity may be present) and it</span>
+<span class="w">        </span><span class="c">!    often is inadvisable to continue.</span>
+
+<span class="w">        </span><span class="c">!    if iflag=7 is encountered, the user should use the one-step</span>
+<span class="w">        </span><span class="c">!    integration mode with the stepsize determined by the code or</span>
+<span class="w">        </span><span class="c">!    consider switching to the adams codes de/step,intrp. if the user</span>
+<span class="w">        </span><span class="c">!    insists upon continuing the integration with rkf45, he must reset</span>
+<span class="w">        </span><span class="c">!    iflag to 2 before calling rkf45 again. otherwise,execution will be</span>
+<span class="w">        </span><span class="c">!    terminated.</span>
+
+<span class="w">        </span><span class="c">!    if iflag=8 is obtained, integration can not be continued unless</span>
+<span class="w">        </span><span class="c">!    the invalid input parameters are corrected.</span>
+
+<span class="w">        </span><span class="c">!    it should be noted that the arrays work,iwork contain information</span>
+<span class="w">        </span><span class="c">!    required for subsequent integration. accordingly, work and iwork</span>
+<span class="w">        </span><span class="c">!    should not be altered.</span>
+
+<span class="w">        </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">neqn</span><span class="w"></span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">y</span><span class="p">(</span><span class="n">neqn</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">t</span><span class="w"></span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">tout</span><span class="w"></span>
+<span class="w">        </span><span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iflag</span><span class="p">,</span><span class="w"> </span><span class="n">iwork</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">relerr</span><span class="p">,</span><span class="w"> </span><span class="n">work</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="kt">real</span><span class="p">(</span><span class="nb">kind</span><span class="o">=</span><span class="n">rk</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">abserr</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">procedure</span><span class="p">(</span><span class="n">fcn</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">f</span><span class="w"></span>
+
+<span class="w">        </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">k1</span><span class="p">,</span><span class="w"> </span><span class="n">k2</span><span class="p">,</span><span class="w"> </span><span class="n">k3</span><span class="p">,</span><span class="w"> </span><span class="n">k4</span><span class="p">,</span><span class="w"> </span><span class="n">k5</span><span class="p">,</span><span class="w"> </span><span class="n">k6</span><span class="p">,</span><span class="w"> </span><span class="n">k1m</span><span class="w"></span>
+
+<span class="w">        </span><span class="c">!     compute indices for the splitting of the work array</span>
+
+<span class="w">        </span><span class="n">k1m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">neqn</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="n">k1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k1m</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">        </span><span class="n">k2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">neqn</span><span class="w"></span>
+<span class="w">        </span><span class="n">k3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">neqn</span><span class="w"></span>
+<span class="w">        </span><span class="n">k4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">neqn</span><span class="w"></span>
+<span class="w">        </span><span class="n">k5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">neqn</span><span class="w"></span>
+<span class="w">        </span><span class="n">k6</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">neqn</span><span class="w"></span>
+
+<span class="w">        </span><span class="c">!     this interfacing routine merely relieves the user of a long</span>
+<span class="w">        </span><span class="c">!     calling list via the splitting apart of two working storage</span>
+<span class="w">        </span><span class="c">!     arrays. if this is not compatible with the users compiler,</span>
+<span class="w">        </span><span class="c">!     he must use rkfs directly.</span>
+
+<span class="w">        </span><span class="k">call </span><span class="n">rkfs</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">neqn</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">tout</span><span class="p">,</span><span class="w"> </span><span class="n">relerr</span><span class="p">,</span><span class="w"> </span><span class="n">abserr</span><span class="p">,</span><span class="w"> </span><span class="n">iflag</span><span class="p">,</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                  </span><span class="n">work</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">work</span><span class="p">(</span><span class="n">k1m</span><span class="p">),</span><span class="w"> </span><span class="n">work</span><span class="p">(</span><span class="n">k1</span><span class="p">),</span><span class="w"> </span><span class="n">work</span><span class="p">(</span><span class="n">k2</span><span class="p">),</span><span class="w"> </span><span class="n">work</span><span class="p">(</span><span class="n">k3</span><span class="p">),</span><span class="w"> </span><span class="n">work</span><span class="p">(</span><span class="n">k4</span><span class="p">),</span><span class="w"> </span><span class="n">work</span><span class="p">(</span><span class="n">k5</span><span class="p">),</span><span class="w"> </span><span class="n">work</span><span class="p">(</span><span class="n">k6</span><span class="p">),</span><span class="w"> </span><span class="n">work</span><span class="p">(</span><span class="n">k6</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">                  </span><span class="n">iwork</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="n">iwork</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="n">iwork</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">iwork</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span><span class="w"> </span><span class="n">iwork</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span>
+<span class="k">    end subroutine </span><span class="n">rkf45</span><span class="w"></span>
+</pre></div>
+
+    </section>
+    <br>
+    
+    </div>
+  </div>
+
+      <hr>
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6 col-md-6"><p>Fortran free function collection was developed by 左志华<br>&copy; 2023 
+</p>
+          </div>
+          <div class="col-xs-6 col-md-6">
+            <p class="text-right">
+              Documentation generated by
+              <a href="https://github.com/Fortran-FOSS-Programmers/ford">FORD</a>
+ on 2023-06-16 10:57              </p>
+          </div>
+        </div>
+        <br>
+      </div> <!-- /container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+         ================================================== -->
+         <!-- Placed at the end of the document so the pages load faster -->
+    <!--
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        -->
+        <script src="../js/bootstrap.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+        <!-- MathJax JavaScript
+             ================================================== -->
+             <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+          jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+          extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+          });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+          <script src="../tipuesearch/tipuesearch_content.js"></script>
+          <script src="../tipuesearch/tipuesearch_set.js"></script>
+          <script src="../tipuesearch/tipuesearch.js"></script>
+
+  </body>
+</html>
