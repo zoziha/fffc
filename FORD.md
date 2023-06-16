@@ -5,7 +5,7 @@ src_dir: src
 preprocess: false
 project_website: https://gitee.com/ship-stack/fffc
 project_github: https://github.com/zoziha/fffc
-output_dir: _build/api-html
+output_dir: _build/ford
 page_dir: ford
 author: 左志华
 author_description: 哈尔滨工程大学-船舶与海洋结构物设计制造
