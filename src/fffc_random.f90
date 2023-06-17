@@ -1,8 +1,12 @@
+!> 随机数
 module fffc_random
+
     use fffc_kinds
     use random
+
     private
     public :: randn, randu
+
     interface
         impure elemental module subroutine randn(x, mean, std)
             real(kind=fffc_real_kind), intent(out) :: x
@@ -13,4 +17,5 @@ module fffc_random
             real(kind=fffc_real_kind), intent(in) :: min, max
         end subroutine randu
     end interface
+
 end module fffc_random

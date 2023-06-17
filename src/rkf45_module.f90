@@ -16,6 +16,7 @@ module rkf45_module
     end interface
 
 contains
+
     !> rkf45 is primarily designed to solve non-stiff and mildly stiff
     !> differential equations when derivative evaluations are inexpensive.
     !> rkf45 should generally not be used when the user is demanding
@@ -622,11 +623,10 @@ contains
         ch = h/7618050.0_rk
         do k = 1, neqn
             s(k) = y(k) + ch*((902880.0_rk*yp(k) + (3855735.0_rk*f3(k) - &
-                                                                 1371249.0_rk*f4(k))) &
+                                                    1371249.0_rk*f4(k))) &
                               + (3953664.0_rk*f2(k) + 277020.0_rk*f5(k)))
         end do
 
-        return
     end subroutine fehl
 
 end module rkf45_module

@@ -4,22 +4,22 @@ title: Linear Algebra
 
 [TOC]
 
-# ÏßĞÔ´úÊı
+# çº¿æ€§ä»£æ•°
 
-`fffc_linalg` Ä£¿éÌá¹©ÁË³£ÓÃµÄÏßĞÔ´úÊıÇó½âº¯Êı¡£
+`fffc_linalg` æ¨¡å—æä¾›äº†å¸¸ç”¨çš„çº¿æ€§ä»£æ•°æ±‚è§£å‡½æ•°ã€‚
 
 ## `inv`
 
-¾ØÕóÇóÄæ¡£
+çŸ©é˜µæ±‚é€†ã€‚
 
-### Óï·¨
+### è¯­æ³•
 
 `call [[fffc_linalg(module):inv(interface)]](a)`
 
 @note
-Ã»ÓĞÊ¹ÓÃ `b = inv(a)` µÄĞÎÊ½ÊÇ¿¼ÂÇµ½£º½«¾ØÕó¸³ÖµµÄ²Ù×÷½»¸øÓÃ»§×Ô¼º¡£
+æ²¡æœ‰ä½¿ç”¨ `b = inv(a)` çš„å½¢å¼æ˜¯è€ƒè™‘åˆ°ï¼šå°†çŸ©é˜µèµ‹å€¼çš„æ“ä½œäº¤ç»™ç”¨æˆ·è‡ªå·±ã€‚
 
-### Àı×Ó
+### ä¾‹å­
 
 ```fortran
 program demo_inv
@@ -31,13 +31,13 @@ end program demo_inv
 
 ## `gemm`
 
-¾ØÕóÏà³Ë¡£
+çŸ©é˜µç›¸ä¹˜ã€‚
 
-### Óï·¨
+### è¯­æ³•
 
 `c = [[fffc_linalg(module):gemm(interface)]](a, b)`
 
-### Àı×Ó
+### ä¾‹å­
 
 ```fortran
 program demo_gemm
@@ -50,16 +50,16 @@ end program demo_gemm
 
 ## `solve`
 
-ÏßĞÔ·½³Ì×éÇó½â¡£
+çº¿æ€§æ–¹ç¨‹ç»„æ±‚è§£ã€‚
 
-### Óï·¨
+### è¯­æ³•
 
 `call [[fffc_linalg(module):solve(interface)]](a, b)`
 
 @note
-Ã»ÓĞÊ¹ÓÃ `b = solve(a, b)` µÄĞÎÊ½ÊÇ¿¼ÂÇµ½£º½«¾ØÕó¸³ÖµµÄ²Ù×÷½»¸øÓÃ»§×Ô¼º¡£
+æ²¡æœ‰ä½¿ç”¨ `b = solve(a, b)` çš„å½¢å¼æ˜¯è€ƒè™‘åˆ°ï¼šå°†çŸ©é˜µèµ‹å€¼çš„æ“ä½œäº¤ç»™ç”¨æˆ·è‡ªå·±ã€‚
 
-### Àı×Ó
+### ä¾‹å­
 
 ```fortran
 program demo_solve
@@ -72,13 +72,13 @@ end program demo_solve
 
 ## `diag`
 
-¶Ô½Ç¾ØÕóÓë¾ØÕó¶Ô½ÇÏòÁ¿µÄÏà»¥×ª»»¡£
+å¯¹è§’çŸ©é˜µä¸çŸ©é˜µå¯¹è§’å‘é‡çš„ç›¸äº’è½¬æ¢ã€‚
 
-### Óï·¨
+### è¯­æ³•
 
 `b = [[fffc_linalg(module):diag(interface)]](a)`
 
-### Àı×Ó
+### ä¾‹å­
 
 ```fortran
 program demo_diag
@@ -91,13 +91,13 @@ end program demo_diag
 
 ## `det`
 
-¾ØÕóĞĞÁĞÊ½Öµ¡£
+çŸ©é˜µè¡Œåˆ—å¼å€¼ã€‚
 
-### Óï·¨
+### è¯­æ³•
 
 `b = [[fffc_linalg(module):det(interface)]](a)`
 
-### Àı×Ó
+### ä¾‹å­
 
 ```fortran
 program demo_det
@@ -108,13 +108,13 @@ end program demo_det
 
 ## `eye`
 
-¹¹Ôìµ¥Î»¾ØÕó¡£
+æ„é€ å•ä½çŸ©é˜µã€‚
 
-### Óï·¨
+### è¯­æ³•
 
 `b = [[fffc_linalg(module):eye(interface)]](m, n)`
 
-### Àı×Ó
+### ä¾‹å­
 
 ```fortran
 program demo_eye

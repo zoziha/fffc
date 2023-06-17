@@ -1,5 +1,12 @@
+!> 字符串
 module fffc_string
+
     use fffc_kinds
+    implicit none
+
+    private
+    public :: to_string, to_lower, to_upper
+
     interface to_string
         module function to_string_real_kind(real, fmt) result(string)
             real(kind=fffc_real_kind), intent(in) :: real
@@ -17,6 +24,7 @@ module fffc_string
             character(len=:), allocatable :: string
         end function to_string_logical_kind
     end interface to_string
+
     interface
         pure module function to_lower(string) result(lower)
             character(len=*), intent(in) :: string
@@ -27,4 +35,5 @@ module fffc_string
             character(len=len(string)) :: upper
         end function to_upper
     end interface
+
 end module fffc_string

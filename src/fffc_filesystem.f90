@@ -3,6 +3,10 @@ module fffc_filesystem
 
     implicit none
 
+    private
+    public :: is_windows, mkdir, rmdir, exists, countlines, unix_path, &
+              dirname, basename, operator(.join.)
+
     interface
         module function is_windows()
             logical :: is_windows
