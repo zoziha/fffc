@@ -7,6 +7,7 @@ program test_func_api
     use, intrinsic :: iso_fortran_env, only: error_unit
     use testdrive, only: run_testsuite, new_testsuite, testsuite_type
     use test_fffc_filesystem, only: collect_filesystem
+    use test_fffc_time, only: collect_time
     implicit none
 
     integer :: stat, is
@@ -16,7 +17,8 @@ program test_func_api
     stat = 0
 
     allocate (testsuites, source=[ &
-              new_testsuite("filesystem", collect_filesystem) &
+              new_testsuite("filesystem", collect_filesystem), &
+              new_testsuite("time", collect_time) &
               ])
 
     do is = 1, size(testsuites)

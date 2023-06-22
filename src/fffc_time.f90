@@ -1,17 +1,17 @@
 !> 时间模块
 module fffc_time
 
-    use fffc_kinds
+    use fffc_kinds, only: rk => fffc_real_kind
     implicit none
 
     private
-    public :: timer
+    public :: timer, sec2hms, nowtime
 
     !> 计时器类型
     type timer
         integer, private :: seed
     contains
-        procedure :: tic, toc, nowtime
+        procedure :: tic, toc
     end type timer
 
 contains
@@ -27,17 +27,29 @@ contains
     !> 结束计时
     function toc(self)
         class(timer), intent(in) :: self
-        real(kind=fffc_real_kind) :: toc
+        real(kind=rk) :: toc
         integer :: time_now, time_rate
 
         call system_clock(time_now, time_rate)
-        toc = real(time_now - self%seed, fffc_real_kind)/time_rate
+        toc = real(time_now - self%seed, rk)/time_rate
 
     end function toc
 
+    !> 将秒数转换为时分秒
+    pure function sec2hms(sec) result(hms)
+        real(kind=rk), intent(in) :: sec
+        character(8) :: hms
+        integer :: h, m, s
+
+        h = int(sec/3600.0_rk)
+        m = int((sec - h*3600.0_rk)/60.0_rk)
+        s = int(sec - h*3600.0_rk - m*60.0_rk)
+        write(hms, '(i2.2, ":", i2.2, ":", i2.2)') h, m, s
+
+    end function sec2hms
+
     !> 获取当前时间
-    character(23) function nowtime(self) result(t)
-        class(timer), intent(in) :: self
+    character(23) function nowtime() result(t)
         character(len=8) :: datstr
         character(len=10) :: timstr
 

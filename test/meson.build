@@ -5,6 +5,7 @@ endif
 
 test_src = files(
     'test_fffc_filesystem.F90',
+    'test_fffc_time.f90',
 )
 
 test_lib = library(
