@@ -6,18 +6,23 @@ module fffc_terminal
     implicit none
 
     private
-    public :: terminal, terminal_obj
+    public :: terminal, terminal_obj, stdout_flush, stdout_newline
 
     character(*), parameter :: colors(*) = [achar(27)//'[31m', &
                                             achar(27)//'[32m', &
                                             achar(27)//'[33m', &
                                             achar(27)//'[34m', &
                                             achar(27)//'[00m']
+    !> 终端
     type terminal
-        logical, private :: use_color = .false.
+        private
+        logical :: use_color = .false.
+        integer :: len_bar = 23  !! 进度长度
+        character(1) :: marker(2) = ["*", "-"]  !! 标志
+        integer :: count = 1
     contains
-        procedure :: setup => set_terminal
-        procedure :: progress_bar => terminal_progress_bar
+        procedure :: init => set_terminal
+        procedure :: progress_bar, alive_bar
         procedure :: info => terminal_info
         procedure :: warning => terminal_warning
         procedure :: error => terminal_error
@@ -30,20 +35,15 @@ module fffc_terminal
 contains
 
     !> 设置终端输出
-    subroutine set_terminal(self)
-        class(terminal), intent(out) :: self
+    pure subroutine set_terminal(self, use_color, len_bar, marker)
+        class(terminal), intent(inout) :: self
+        logical, intent(in), optional :: use_color
+        integer, intent(in), optional :: len_bar
+        character(1), intent(in), optional :: marker(2)
 
-        if (.not. is_env('NO_COLOR') .and. &
-#ifdef NO_COLOR
-            .false. &
-#else
-            .true. &
-#endif
-            ) then
-            self%use_color = .true.
-        else
-            self%use_color = .false.
-        end if
+        if (present(use_color)) self%use_color = use_color
+        if (present(len_bar)) self%len_bar = len_bar - 2
+        if (present(marker)) self%marker = marker
 
     end subroutine set_terminal
 
@@ -137,23 +137,45 @@ contains
 
     end function red
 
+    !> 回车刷新
+    subroutine stdout_flush()
+
+        write (*, '(a)', advance='no') ccr
+
+    end subroutine stdout_flush
+
+    !> 结束进度条
+    subroutine stdout_newline()
+
+        write (*, '(a)') ""
+
+    end subroutine stdout_newline
+
     !> 进度条
-    subroutine terminal_progress_bar(self, msg, p)
+    pure function progress_bar(self, progress) result(bar)
         class(terminal), intent(in) :: self
-        character(*), intent(in) :: msg
-        real, intent(in) :: p
+        real, intent(in) :: progress
         character(:), allocatable :: bar
-        integer :: length_
-        integer, parameter :: l = 35
-        real :: p_local
+        real :: progress_
 
-        length_ = len(msg) + l + 12
-        p_local = min(1.0, max(0.0, p))
-        allocate (character(length_) :: bar)
-        write (bar, "(2A,A2,A35,A2,F5.1,A2)") ccr, msg, &
-            " [", repeat("*", nint(p_local*l))//repeat("-", l - nint(p_local*l)), "] ", 100*p, " %"
-        write (*, '(a)', advance='no') bar
+        progress_ = min(1.0, max(0.0, progress))
+        associate (pad => nint(progress_*self%len_bar))
+            allocate (bar, source="["//repeat(self%marker(1), pad)// &
+                      repeat(self%marker(2), self%len_bar - pad)//"]")
+        end associate
 
-    end subroutine terminal_progress_bar
+    end function progress_bar
+
+    !> 动态进度条
+    function alive_bar(self) result(bar)
+        class(terminal), intent(inout) :: self
+        character(1) :: bar
+        character(*), parameter :: marker = "!@#$%^&*()"
+
+        if (self%count == 11) self%count = 1
+        bar(1:1) = marker(self%count:self%count)
+        self%count = self%count + 1
+
+    end function alive_bar
 
 end module fffc_terminal

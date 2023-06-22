@@ -1,15 +1,21 @@
 program example_progress_bar
 
-    use fffc_module, only: terminal_obj
+    use fffc_module, only: terminal_obj, stdout_flush, stdout_newline
     implicit none
+    integer :: i
 
-    call terminal_obj%progress_bar('Progress bar', 0.0)
-    print *, "..."
-    call terminal_obj%progress_bar('Progress bar', -0.5)
-    print *, "..."
-    call terminal_obj%progress_bar('Progress bar', 0.5)
-    print *, "..."
-    call terminal_obj%progress_bar('Progress bar', 1.5)
-    print *, "..."
+    do i = 1, 10
+        call stdout_flush()
+        write (*, '(a)', advance='no') terminal_obj%progress_bar(real(i)/10)
+        write (*, '(", ", a)', advance='no') terminal_obj%alive_bar()
+    end do
+    call stdout_newline()
+
+    do i = 1, 10
+        call stdout_flush()
+        write (*, '(a)', advance='no') terminal_obj%progress_bar(real(i)/10)
+        write (*, '(", ", a)', advance='no') terminal_obj%alive_bar()
+        call stdout_newline()
+    end do
 
 end program example_progress_bar
