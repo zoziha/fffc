@@ -182,9 +182,9 @@ contains
             value_ = value
 
 #ifdef __INTEL_COMPILER
-            write (*, '(2a,1x,a,1x,i0,a,i0,1x,a,i0,a,i0,3a\)') CR, self%progress(progress), &
+            write (*, '(2a,1x,a,1x,i0,a,i0,1x,a,i0,a,i0,3a\)') CR, self%progress_bar(progress), &
 #else
-            write (*, '(2a,1x,a,1x,i0,a,i0,1x,a,i0,a,i0,3a)', advance='no') CR, self%progress(progress), &
+            write (*, '(2a,1x,a,1x,i0,a,i0,1x,a,i0,a,i0,3a)', advance='no') CR, self%progress_bar(progress), &
 #endif
                 self%alive_bar(), value, '/', max, &
                 '[', nint(progress*100), '%] (', nint(v), '/s, eta: ', sec2hms(eta), ')'

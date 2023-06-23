@@ -10,6 +10,7 @@ fffc_src_filenames += [
     'fffc_filesystem_rmdir.f90',
     'fffc_filesystem_unix_path.f90',
     'fffc_filesystem.f90',
+    'fffc_io.f90',
     'fffc_kinds.F90',
     'fffc_linalg_eye.f90',
     'fffc_linalg_gemm.F90',
