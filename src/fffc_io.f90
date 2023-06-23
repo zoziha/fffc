@@ -144,7 +144,7 @@ contains
         character(:), allocatable, intent(inout) :: string
         integer :: i
 
-        if (brief) then
+        if (brief .and. size(x) > 5) then
             string = string//to_string(x(1), format)//', '//to_string(x(2), format)//', '// &
                      to_string(x(3), format)//', ... '//to_string(x(size(x)), format)
         else
