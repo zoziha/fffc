@@ -2,11 +2,13 @@
 module fffc_terminal
 
     use fffc_utils
-    use, intrinsic :: iso_c_binding, only: ccr => c_carriage_return
+    use, intrinsic :: iso_c_binding, only: CR => c_carriage_return
+    use fffc_time, only: timer, sec2hms
+    use fffc_kinds, only: rk => fffc_real_kind
     implicit none
 
     private
-    public :: terminal, terminal_obj, stdout_flush, stdout_newline
+    public :: terminal, terminal_obj, CR
 
     character(*), parameter :: colors(*) = [achar(27)//'[31m', &
                                             achar(27)//'[32m', &
@@ -22,7 +24,7 @@ module fffc_terminal
         integer :: count = 1
     contains
         procedure :: init => set_terminal
-        procedure :: progress_bar, alive_bar
+        procedure :: progress_bar, alive_bar, bar
         procedure :: info => terminal_info
         procedure :: warning => terminal_warning
         procedure :: error => terminal_error
@@ -137,20 +139,6 @@ contains
 
     end function red
 
-    !> 回车刷新
-    subroutine stdout_flush()
-
-        write (*, '(a)', advance='no') ccr
-
-    end subroutine stdout_flush
-
-    !> 结束进度条
-    subroutine stdout_newline()
-
-        write (*, '(a)') ""
-
-    end subroutine stdout_newline
-
     !> 进度条
     pure function progress_bar(self, progress) result(bar)
         class(terminal), intent(in) :: self
@@ -170,12 +158,41 @@ contains
     function alive_bar(self) result(bar)
         class(terminal), intent(inout) :: self
         character(1) :: bar
-        character(*), parameter :: marker = "!@#$%^&*()"
+        character(*), parameter :: marker = "|/-\"
 
-        if (self%count == 11) self%count = 1
+        if (self%count == 5) self%count = 1
         bar(1:1) = marker(self%count:self%count)
         self%count = self%count + 1
 
     end function alive_bar
+
+    !> 进度条
+    subroutine bar(self, value, max)
+        class(terminal), intent(inout) :: self
+        integer, intent(in) :: value, max
+        type(timer), save :: tmr  !! 计时器
+        integer, save :: value_  !! 上一次的值
+        real(rk) :: dt, v
+
+        dt = tmr%toc()
+        v = (value - value_)/dt
+
+        associate (eta => (max - value)/v, &
+                   progress => real(value)/max)
+            value_ = value
+
+#ifdef __INTEL_COMPILER
+            write (*, '(2a,1x,a,1x,i0,a,i0,1x,a,i0,a,i0,3a\)') CR, self%progress_bar(progress), &
+#else
+            write (*, '(2a,1x,a,1x,i0,a,i0,1x,a,i0,a,i0,3a)', advance='no') CR, self%progress_bar(progress), &
+#endif
+                self%alive_bar(), value, '/', max, &
+                '[', nint(progress*100), '%] (', nint(v), '/s, eta: ', sec2hms(eta), ')'
+
+        end associate
+
+        call tmr%tic()
+
+    end subroutine bar
 
 end module fffc_terminal
