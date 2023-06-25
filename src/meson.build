@@ -47,6 +47,5 @@ fffc_src_filenames += [
     'fffc_utils_swap.f90',
     'fffc_utils.f90',
     'random.f90',
-    'rkf45_module.f90',
 ]
 fffc_src += files(fffc_src_filenames)

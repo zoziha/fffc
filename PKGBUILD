@@ -19,7 +19,7 @@ makedepends=("${MINGW_PACKAGE_PREFIX}-fc"
              "${MINGW_PACKAGE_PREFIX}-pkg-config"
              "${MINGW_PACKAGE_PREFIX}-openblas")
 source=(${_realname}-${pkgver}.zip::"${url}/repository/archive/master.zip")
-sha256sums=('0f0043c126ebb67d2651a1f46bdac8ec572ed68c3c95c6ff8d3c1afbc1d357fc')
+sha256sums=('3de45b86de3eda5fcb58235ed8e26f6da0d711bbd0e0c208cf9bc64694aea4ed')
 
 build() {
     mkdir -p build-${MSYSTEM} && cd build-${MSYSTEM}

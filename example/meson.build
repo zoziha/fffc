@@ -3,8 +3,3 @@ example_random = executable(
     'test_random.f90',
     link_with: fffc_lib,
 )
-example_rkf45 = executable(
-    'rkf45',
-    'test_rkf45.f90',
-    link_with: fffc_lib,
-)
