@@ -13,7 +13,6 @@ module fffc_module
     use fffc_time
     use fffc_utils
     use random
-    use rkf45_module
     implicit none
 
 end module fffc_module
