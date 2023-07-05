@@ -9,6 +9,7 @@ program test_func_api
     use test_fffc_filesystem, only: collect_filesystem
     use test_fffc_time, only: collect_time
     use test_fffc_io, only: collect_io
+    use test_fffc_terminal, only: collect_terminal
     implicit none
 
     integer :: stat, is
@@ -20,6 +21,7 @@ program test_func_api
     allocate (testsuites, source=[ &
               new_testsuite("filesystem", collect_filesystem), &
               new_testsuite("io", collect_io), &
+              new_testsuite("terminal", collect_terminal), &
               new_testsuite("time", collect_time) &
               ])
 

@@ -184,7 +184,7 @@ contains
 
         dt = tmr%toc()
 
-        if (maxval == value_) then
+        if (maxval <= value_) then
             v = 0.0_rk
             eta = 0.0_rk
         else

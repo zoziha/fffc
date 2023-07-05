@@ -13,7 +13,8 @@ title: Terminal
 
 除此之外，还提供了进度条例程：
 
-* `stdout_flush`: 刷新标准输出缓冲区;
-* `stdout_newline`: 输出一个字符并换行;
+* `bar`: 输出进度条;
 * `progress_bar`: 返回一个进度条字符串;
 * `alive_bar`: 返回一个活动进度条字符串.
+
+单独的进度条包见[zoziha/progress-bar](https://github.com/zoziha/progress-bar)。

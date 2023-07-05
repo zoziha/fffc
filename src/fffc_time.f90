@@ -38,13 +38,13 @@ contains
     !> 将秒数转换为时分秒
     pure function sec2hms(sec) result(hms)
         real(kind=rk), intent(in) :: sec
-        character(8) :: hms
+        character(12) :: hms
         integer :: h, m, s
 
         h = int(sec/3600.0_rk)
         m = int((sec - h*3600.0_rk)/60.0_rk)
-        s = int(sec - h*3600.0_rk - m*60.0_rk)
-        write(hms, '(i2.2, ":", i2.2, ":", i2.2)') h, m, s
+        s = int(mod(sec, 60.0_rk))
+        write (hms, '(i2.2, ":", i2.2, ":", i2.2,".",i3.3)') h, m, s, nint((sec - int(sec))*1000.0_rk)
 
     end function sec2hms
 
